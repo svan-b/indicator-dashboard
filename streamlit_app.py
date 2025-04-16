@@ -4,37 +4,12 @@ Economic Indicators Dashboard - Streamlit Entry Point
 This is the main entry point for Streamlit Cloud deployment.
 """
 
-import pandas as pd
-import numpy as np
+# Essential imports first
+import os
+import sys
 import streamlit as st
-import plotly.graph_objects as go
-import plotly.express as px
-from datetime import datetime, timedelta
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO,
-    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-)
-logger = logging.getLogger(__name__)
-
-# Debug information
-logger.info(f"Current directory: {os.getcwd()}")
-logger.info(f"Directory contents: {os.listdir('.')}")
-logger.info(f"Python path: {sys.path}")
-
-# Add current directory to path to ensure modules can be imported
-current_dir = os.path.dirname(os.path.abspath(__file__))
-if current_dir not in sys.path:
-    sys.path.insert(0, current_dir)
-
-# Create necessary directory structure
-data_dir = os.path.join(current_dir, "data")
-os.makedirs(data_dir, exist_ok=True)
-for subdir in ["raw", "processed", "forecasts"]:
-    os.makedirs(os.path.join(data_dir, subdir), exist_ok=True)
-
-# Set page configuration
+# Set page configuration early to avoid warnings
 st.set_page_config(
     page_title="Economic Indicators Dashboard",
     page_icon="📊",
@@ -42,35 +17,121 @@ st.set_page_config(
     initial_sidebar_state="expanded"
 )
 
-# Import dashboard components - wrap in try/except for debugging
+# Simple logger fallback in case of import issues
+class SimpleLogger:
+    def info(self, msg): 
+        print(f"INFO: {msg}")
+    def error(self, msg): 
+        print(f"ERROR: {msg}")
+    def warning(self, msg): 
+        print(f"WARNING: {msg}")
+
+# Initialize logger with fallback
+try:
+    import logging
+    logging.basicConfig(
+        level=logging.INFO,
+        format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+    )
+    logger = logging.getLogger(__name__)
+    logger.info("Logging initialized successfully")
+except Exception as e:
+    logger = SimpleLogger()
+    st.sidebar.error(f"Logging initialization issue: {str(e)}")
+
+# Try to import other required libraries
+try:
+    import pandas as pd
+    import numpy as np
+    from datetime import datetime, timedelta
+    import plotly.graph_objects as go
+    import plotly.express as px
+    logger.info("Basic libraries imported successfully")
+except Exception as e:
+    st.error(f"Failed to import basic libraries: {str(e)}")
+    logger.error(f"Import error for basic libraries: {str(e)}")
+    st.stop()
+
+# Add path handling
+try:
+    # Add current directory to path to ensure modules can be imported
+    current_dir = os.path.dirname(os.path.abspath(__file__))
+    if current_dir not in sys.path:
+        sys.path.insert(0, current_dir)
+    logger.info(f"Added current directory to path: {current_dir}")
+except Exception as e:
+    st.warning(f"Path handling issue (non-critical): {str(e)}")
+
+# Create necessary directory structure
+try:
+    # Ensure data directories exist
+    data_dir = "data"  # Use relative path for better Cloud compatibility
+    os.makedirs(data_dir, exist_ok=True)
+    for subdir in ["raw", "processed", "forecasts"]:
+        subdir_path = os.path.join(data_dir, subdir)
+        os.makedirs(subdir_path, exist_ok=True)
+        logger.info(f"Ensured directory exists: {subdir_path}")
+except Exception as e:
+    st.warning(f"Directory creation issue (non-critical): {str(e)}")
+
+# Debug information
+try:
+    st.sidebar.markdown("### Debug Info")
+    if st.sidebar.checkbox("Show debug info", False):
+        st.sidebar.write(f"Python version: {sys.version}")
+        st.sidebar.write(f"Current directory: {os.getcwd()}")
+        st.sidebar.write(f"Directory contents: {os.listdir('.')}")
+        if os.path.exists("data"):
+            st.sidebar.write(f"Data directory contents: {os.listdir('data')}")
+            for subdir in ["raw", "processed", "forecasts"]:
+                path = os.path.join("data", subdir)
+                if os.path.exists(path):
+                    st.sidebar.write(f"{subdir} directory contents: {os.listdir(path)}")
+except Exception as e:
+    st.sidebar.warning(f"Debug info error (non-critical): {str(e)}")
+
+# Title and introduction
+st.markdown('<h1 style="color:#00103f; font-size:2.5rem; font-weight:700;">Economic Indicators Dashboard</h1>', unsafe_allow_html=True)
+
+# Import dashboard components
 try:
     from dashboard.utils.styling import get_css
-    from dashboard.utils.data_loader import load_all_indicators
+    from dashboard.utils.data_loader import load_all_indicators, verify_data_availability
     from dashboard.utils.data_processor import filter_time_period, download_link
     from dashboard.components.indicator_card import create_indicator_card
     from dashboard.pages.correlation_page import show_correlation_page
     from dashboard.pages.cost_indicators_page import show_cost_indicators_page
     
+    # Apply custom CSS
+    st.markdown(get_css(), unsafe_allow_html=True)
+    
     logger.info("Successfully imported all required modules")
 except ImportError as e:
-    st.error(f"Failed to import required modules: {e}")
-    logger.error(f"Import error: {e}")
+    st.error(f"Failed to import required modules: {str(e)}")
+    logger.error(f"Import error: {str(e)}")
+    
     # Show directory structure for debugging
     if os.path.exists("dashboard"):
         st.write("Dashboard directory found. Contents:")
         st.code("\n".join(os.listdir("dashboard")))
+        for subdir in ["utils", "components", "pages"]:
+            if os.path.exists(os.path.join("dashboard", subdir)):
+                st.write(f"dashboard/{subdir} contents:")
+                st.code("\n".join(os.listdir(os.path.join("dashboard", subdir))))
     else:
         st.error("Dashboard directory not found!")
         st.write(f"Available directories: {os.listdir('.')}")
     st.stop()
 
-# Apply custom CSS
-st.markdown(get_css(), unsafe_allow_html=True)
+# Verify data availability before loading
+try:
+    data_available = verify_data_availability()
+    if not data_available:
+        st.warning("Some data directories were not found. Sample data will be used.")
+except Exception as e:
+    st.warning(f"Data verification error (non-critical): {str(e)}")
 
-# Title and introduction
-st.markdown('<h1 class="main-header">Economic Indicators Dashboard</h1>', unsafe_allow_html=True)
-
-# Load data
+# Load data with caching
 @st.cache_data(ttl=3600)
 def load_data():
     logger.info("Loading indicator data...")
@@ -86,7 +147,7 @@ def load_data():
 all_indicators, forecasts, summary_data, corr_matrix = load_data()
 
 # Dashboard Settings Sidebar
-st.sidebar.markdown('<h2 class="sidebar-title">Dashboard Settings</h2>', unsafe_allow_html=True)
+st.sidebar.markdown('<h2 style="color:#00103f; font-size:1.5rem; font-weight:600; margin-top:1.5rem;">Dashboard Settings</h2>', unsafe_allow_html=True)
 time_period = st.sidebar.selectbox(
     "Select Time Period",
     ["Last 6 Months", "Last 12 Months", "Last 24 Months", "All Available Data"],
@@ -99,8 +160,8 @@ st.session_state['time_period'] = time_period
 st.session_state['forecast_toggle'] = forecast_toggle
 
 # Add sidebar for data downloads
-st.sidebar.markdown('<h2 class="sidebar-title">Download Data</h2>', unsafe_allow_html=True)
-st.sidebar.markdown('<p class="sidebar-text">Download the raw data for each indicator:</p>', unsafe_allow_html=True)
+st.sidebar.markdown('<h2 style="color:#00103f; font-size:1.5rem; font-weight:600; margin-top:1.5rem;">Download Data</h2>', unsafe_allow_html=True)
+st.sidebar.markdown('<p style="color:#333333; font-size:0.9rem;">Download the raw data for each indicator:</p>', unsafe_allow_html=True)
 
 # Group indicators by category for better organization
 standard_indicators = {k: v for k, v in all_indicators.items() if not any(x in k for x in ['equipment', 'steel', 'cement', 'explosives'])}
@@ -108,7 +169,7 @@ cost_indicators = {k: v for k, v in all_indicators.items() if k not in standard_
 
 # Show standard indicators first
 if standard_indicators:
-    st.sidebar.markdown('<p class="sidebar-text"><strong>Standard Indicators:</strong></p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="color:#333333; font-size:0.9rem;"><strong>Standard Indicators:</strong></p>', unsafe_allow_html=True)
     for indicator_id, df_info in standard_indicators.items():
         df = df_info[0]
         if not df.empty:
@@ -120,7 +181,7 @@ if standard_indicators:
 
 # Then show cost indicators
 if cost_indicators:
-    st.sidebar.markdown('<p class="sidebar-text"><strong>Cost Indicators:</strong></p>', unsafe_allow_html=True)
+    st.sidebar.markdown('<p style="color:#333333; font-size:0.9rem;"><strong>Cost Indicators:</strong></p>', unsafe_allow_html=True)
     for indicator_id, df_info in cost_indicators.items():
         df = df_info[0]
         if not df.empty:
@@ -134,8 +195,7 @@ if cost_indicators:
 view_options = ["Main Dashboard", "Cost Indicators", "Correlation Analysis"]
 selected_view = st.sidebar.radio("Select View", view_options)
 
-# The rest of your main.py code here...
-# I'm including the function for automated commentary since it's referenced below
+# Function for automated commentary
 def generate_automated_commentary(indicator_id, latest_value, monthly_change, yoy_change, forecast_change=None, preferred_direction='neutral'):
     """Generate automated commentary based on indicator metrics"""
     
@@ -197,107 +257,111 @@ def generate_automated_commentary(indicator_id, latest_value, monthly_change, yo
 
 # Main Content based on selected view
 if selected_view == "Main Dashboard":
-    # -------------------- Key Economic Indicators --------------------
-    st.markdown('<h3 class="section-header">Key Economic Indicators</h3>', unsafe_allow_html=True)
-    
-    # Check if we have both indicators with data before creating columns
-    supply_chain_info = all_indicators.get('supply_chain')
-    empire_info = all_indicators.get('empire_prices_paid')
-    
-    supply_chain_has_data = False
-    empire_has_data = False
-    
-    if supply_chain_info:
-        supply_chain_data = filter_time_period(supply_chain_info[0], time_period)
-        supply_chain_has_data = not supply_chain_data.empty
-    
-    if empire_info:
-        empire_data = filter_time_period(empire_info[0], time_period)
-        empire_has_data = not empire_data.empty
-    
-    # Only create columns if at least one indicator has data
-    if supply_chain_has_data or empire_has_data:
-        col1, col2 = st.columns(2)
+    try:
+        # -------------------- Key Economic Indicators --------------------
+        st.markdown('<h3 style="color:#00103f; font-size:1.8rem; font-weight:600; margin-top:1.5rem;">Key Economic Indicators</h3>', unsafe_allow_html=True)
         
-        # Supply Chain Pressure Index
-        with col1:
-            if supply_chain_has_data:
-                create_indicator_card('supply_chain', (supply_chain_data, supply_chain_info[1], supply_chain_info[2]), forecast_toggle, use_absolute=True)
-                
-                # Add automated commentary
-                latest_data = supply_chain_data.iloc[-1]
-                forecast_change = None
-                if forecast_toggle and 'supply_chain' in forecasts:
-                    forecast_df = forecasts['supply_chain'][0]
-                    if not forecast_df.empty and len(forecast_df) > 0:
-                        last_forecast = forecast_df.iloc[-1]
-                        forecast_change = last_forecast['value'] - latest_data['value']
-                
-                commentary = generate_automated_commentary(
-                    'supply_chain', 
-                    latest_data['value'], 
-                    latest_data.get('monthly_change', 0),
-                    latest_data.get('yoy_change', 0),
-                    forecast_change,
-                    latest_data.get('preferred_direction', 'down')
-                )
-                
-                if commentary:
-                    st.markdown(f'<div class="analysis-section">{commentary}</div>', unsafe_allow_html=True)
-            else:
-                st.warning("Supply Chain Pressure Index data is not available")
+        # Check if we have both indicators with data before creating columns
+        supply_chain_info = all_indicators.get('supply_chain')
+        empire_info = all_indicators.get('empire_prices_paid')
         
-        # Empire Manufacturing Prices Paid
-        with col2:
-            if empire_has_data:
-                create_indicator_card('empire_prices_paid', (empire_data, empire_info[1], empire_info[2]), forecast_toggle)
-                
-                # Add automated commentary
-                latest_data = empire_data.iloc[-1]
-                forecast_change = None
-                if forecast_toggle and 'empire_prices_paid' in forecasts:
-                    forecast_df = forecasts['empire_prices_paid'][0]
-                    if not forecast_df.empty and len(forecast_df) > 0:
-                        last_forecast = forecast_df.iloc[-1]
-                        forecast_change = last_forecast['value'] - latest_data['value']
-                        if latest_data['value'] != 0:
-                            forecast_change = (forecast_change / latest_data['value']) * 100
-                
-                commentary = generate_automated_commentary(
-                    'empire_prices_paid', 
-                    latest_data['value'], 
-                    latest_data.get('monthly_change', 0),
-                    latest_data.get('yoy_change', None),
-                    forecast_change,
-                    latest_data.get('preferred_direction', 'down')
-                )
-                
-                if commentary:
-                    st.markdown(f'<div class="analysis-section">{commentary}</div>', unsafe_allow_html=True)
-            else:
-                st.warning("NY Fed Empire Manufacturing Prices Paid data is not available")
-    else:
-        st.warning("No Key Economic Indicators data is available")
+        supply_chain_has_data = False
+        empire_has_data = False
+        
+        if supply_chain_info:
+            supply_chain_data = filter_time_period(supply_chain_info[0], time_period)
+            supply_chain_has_data = not supply_chain_data.empty
+        
+        if empire_info:
+            empire_data = filter_time_period(empire_info[0], time_period)
+            empire_has_data = not empire_data.empty
+        
+        # Only create columns if at least one indicator has data
+        if supply_chain_has_data or empire_has_data:
+            col1, col2 = st.columns(2)
+            
+            # Supply Chain Pressure Index
+            with col1:
+                if supply_chain_has_data:
+                    create_indicator_card('supply_chain', (supply_chain_data, supply_chain_info[1], supply_chain_info[2]), forecast_toggle, use_absolute=True)
+                    
+                    # Add automated commentary
+                    latest_data = supply_chain_data.iloc[-1]
+                    forecast_change = None
+                    if forecast_toggle and 'supply_chain' in forecasts:
+                        forecast_df = forecasts['supply_chain'][0]
+                        if not forecast_df.empty and len(forecast_df) > 0:
+                            last_forecast = forecast_df.iloc[-1]
+                            forecast_change = last_forecast['value'] - latest_data['value']
+                    
+                    commentary = generate_automated_commentary(
+                        'supply_chain', 
+                        latest_data['value'], 
+                        latest_data.get('monthly_change', 0),
+                        latest_data.get('yoy_change', 0),
+                        forecast_change,
+                        latest_data.get('preferred_direction', 'down')
+                    )
+                    
+                    if commentary:
+                        st.markdown(f'<div style="background-color:#f5f5f5; padding:1rem; border-radius:0.5rem; border-left:4px solid #0072CE; margin-top:0.5rem; font-size:0.95rem; color:#333333; line-height:1.4;">{commentary}</div>', unsafe_allow_html=True)
+                else:
+                    st.warning("Supply Chain Pressure Index data is not available")
+            
+            # Empire Manufacturing Prices Paid
+            with col2:
+                if empire_has_data:
+                    create_indicator_card('empire_prices_paid', (empire_data, empire_info[1], empire_info[2]), forecast_toggle)
+                    
+                    # Add automated commentary
+                    latest_data = empire_data.iloc[-1]
+                    forecast_change = None
+                    if forecast_toggle and 'empire_prices_paid' in forecasts:
+                        forecast_df = forecasts['empire_prices_paid'][0]
+                        if not forecast_df.empty and len(forecast_df) > 0:
+                            last_forecast = forecast_df.iloc[-1]
+                            forecast_change = last_forecast['value'] - latest_data['value']
+                            if latest_data['value'] != 0:
+                                forecast_change = (forecast_change / latest_data['value']) * 100
+                    
+                    commentary = generate_automated_commentary(
+                        'empire_prices_paid', 
+                        latest_data['value'], 
+                        latest_data.get('monthly_change', 0),
+                        latest_data.get('yoy_change', None),
+                        forecast_change,
+                        latest_data.get('preferred_direction', 'down')
+                    )
+                    
+                    if commentary:
+                        st.markdown(f'<div style="background-color:#f5f5f5; padding:1rem; border-radius:0.5rem; border-left:4px solid #0072CE; margin-top:0.5rem; font-size:0.95rem; color:#333333; line-height:1.4;">{commentary}</div>', unsafe_allow_html=True)
+                else:
+                    st.warning("NY Fed Empire Manufacturing Prices Paid data is not available")
+        else:
+            st.warning("No Key Economic Indicators data is available")
 
-    # For brevity, I'm not including all of the main.py code here, but in your actual file
-    # you would include all the code for displaying the other sections
-    
-    # Display the remaining dashboard sections:
-    # - Key Price Indicators
-    # - Raw Material & Input Costs
-    # - Supply Chain Related Indicators
-    # - Data Sources & Methodology
-    
-    # This is just a placeholder for those sections
-    st.info("The full dashboard would show additional sections here.")
+        # This is just a placeholder for additional sections
+        st.info("Additional dashboard sections would appear here in the complete version.")
+        
+    except Exception as e:
+        st.error(f"Error in Main Dashboard view: {str(e)}")
+        logger.error(f"Main Dashboard error: {str(e)}")
 
 elif selected_view == "Cost Indicators":
-    # Show the cost indicators page
-    show_cost_indicators_page()
+    try:
+        # Show the cost indicators page
+        show_cost_indicators_page()
+    except Exception as e:
+        st.error(f"Error in Cost Indicators view: {str(e)}")
+        logger.error(f"Cost Indicators error: {str(e)}")
 
 elif selected_view == "Correlation Analysis":
-    # Show correlation analysis page
-    show_correlation_page()
+    try:
+        # Show correlation analysis page
+        show_correlation_page()
+    except Exception as e:
+        st.error(f"Error in Correlation Analysis view: {str(e)}")
+        logger.error(f"Correlation Analysis error: {str(e)}")
 
 # Print success message to log
 logger.info("Dashboard rendered successfully")

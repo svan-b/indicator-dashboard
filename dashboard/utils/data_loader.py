@@ -12,46 +12,57 @@ logger = logging.getLogger(__name__)
 
 # Base data directory - improved path resolution
 def get_data_dir():
-    """Get data directory with more robust path handling."""
-    # Try multiple potential locations for the data directory
+    """Get data directory with more robust path handling for Streamlit Cloud."""
+    
+    # Streamlit Cloud prioritization - look for data directory in repo root
+    if os.path.exists("data"):
+        logger.info("Using data directory at project root (Streamlit Cloud compatible)")
+        return "data"
+    
+    # For local development
     potential_paths = [
-        # Direct path if this is being run from project root - PRIORITIZE THIS for Streamlit Cloud
-        "data",
-        # Path one level up if running from dashboard directory
-        os.path.join("..", "data"),
-        # Current working directory-based path
         os.path.join(os.getcwd(), "data"),
-        # Current file's location-based path
-        os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data"),
-        # Original non-modular path
-        os.path.join(os.path.expanduser("~"), "Commercial and Market Research", "indicator_data"),
-        # Specific path from the full_non_modular_dashboard
-        r"C:\Users\vanbo\Commercial and Market Research\indicator_data",
-        # One level up in project hierarchy
         os.path.join(os.path.dirname(os.getcwd()), "data"),
-        # Two levels up
-        os.path.join(os.path.dirname(os.path.dirname(os.getcwd())), "data"),
+        os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"),
+        os.path.join(os.path.expanduser("~"), "Commercial and Market Research", "indicator_data"),
+        r"C:\Users\vanbo\Commercial and Market Research\indicator_data",
     ]
     
-    # First, check which paths exist AND contain actual data files
-    for path in potential_paths:
-        if os.path.exists(path):
-            raw_dir = os.path.join(path, "raw")
-            if os.path.exists(raw_dir) and len(os.listdir(raw_dir)) > 0:
-                logger.info(f"Found data directory with files at: {path}")
-                return path
-    
-    # If no path with data files is found, use any existing path
     for path in potential_paths:
         if os.path.exists(path):
             logger.info(f"Found data directory at: {path}")
             return path
     
-    # If no existing path found, create and use the working directory-based path
-    default_path = os.path.join(os.getcwd(), "data")
-    logger.warning(f"No existing data directory found. Creating at: {default_path}")
+    # If no existing path found, create and use the repo-root path
+    default_path = "data"
+    logger.info(f"No existing data directory found. Creating at: {default_path}")
     os.makedirs(default_path, exist_ok=True)
     return default_path
+
+def verify_data_availability():
+    """Verify data files exist and log their status."""
+    data_dir = get_data_dir()
+    
+    directories = {
+        "raw": os.path.join(data_dir, "raw"),
+        "processed": os.path.join(data_dir, "processed"),
+        "forecasts": os.path.join(data_dir, "forecasts")
+    }
+    
+    for dir_name, dir_path in directories.items():
+        if os.path.exists(dir_path):
+            files = os.listdir(dir_path)
+            logger.info(f"Found {len(files)} files in {dir_name} directory")
+            if len(files) > 0:
+                logger.info(f"Sample files: {', '.join(files[:5])}")
+            if not files:
+                logger.warning(f"No files found in {dir_name} directory")
+        else:
+            logger.error(f"Directory not found: {dir_path}")
+            os.makedirs(dir_path, exist_ok=True)
+            logger.info(f"Created empty directory: {dir_path}")
+    
+    return all(os.path.exists(dir_path) for dir_path in directories.values())
 
 # Get base data directory
 BASE_DATA_DIR = get_data_dir()
@@ -235,6 +246,9 @@ def generate_sample_forecast_from_actual(indicator_id, actual_data):
 
 def load_all_indicators():
     """Load all economic indicators and their forecasts."""
+    # Verify data is available
+    verify_data_availability()
+    
     all_indicators = {}
     forecasts = {}
     summary_data = {}
