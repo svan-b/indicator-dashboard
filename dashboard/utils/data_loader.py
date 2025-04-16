@@ -15,22 +15,22 @@ def get_data_dir():
     """Get data directory with more robust path handling."""
     # Try multiple potential locations for the data directory
     potential_paths = [
-        # Original non-modular path
-        os.path.join(os.path.expanduser("~"), "Commercial and Market Research", "indicator_data"),
+        # Direct path if this is being run from project root - PRIORITIZE THIS for Streamlit Cloud
+        "data",
+        # Path one level up if running from dashboard directory
+        os.path.join("..", "data"),
         # Current working directory-based path
         os.path.join(os.getcwd(), "data"),
+        # Current file's location-based path
+        os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data"),
+        # Original non-modular path
+        os.path.join(os.path.expanduser("~"), "Commercial and Market Research", "indicator_data"),
+        # Specific path from the full_non_modular_dashboard
+        r"C:\Users\vanbo\Commercial and Market Research\indicator_data",
         # One level up in project hierarchy
         os.path.join(os.path.dirname(os.getcwd()), "data"),
         # Two levels up
         os.path.join(os.path.dirname(os.path.dirname(os.getcwd())), "data"),
-        # Specific path from the full_non_modular_dashboard
-        r"C:\Users\vanbo\Commercial and Market Research\indicator_data",
-        # Current file's location-based path
-        os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "data"),
-        # Direct path if this is being run from project root
-        "data",
-        # Path one level up if running from dashboard directory
-        os.path.join("..", "data"),
     ]
     
     # First, check which paths exist AND contain actual data files
