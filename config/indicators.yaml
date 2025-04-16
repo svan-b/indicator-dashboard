@@ -1,0 +1,90 @@
+# Save this as config/indicators.yaml
+cruspi:
+  name: "CRU Steel Price Index"
+  description: "CRU Steel Price Index tracks steel price movements globally"
+  unit: ""
+  preferred_direction: "neutral"
+  chart_type: "line"
+  chart_height: 250
+  display_priority: 1
+  category: "price_indicators"
+
+cruspi_long:
+  name: "CRU Long Products Index"
+  description: "CRU Steel Price Index for Long Products tracks price movements for steel long products"
+  unit: ""
+  preferred_direction: "neutral"
+  chart_type: "line"
+  chart_height: 250
+  display_priority: 2
+  category: "price_indicators"
+
+wti_oil:
+  name: "WTI Crude Oil Price"
+  description: "West Texas Intermediate Crude Oil price, U.S. benchmark for oil prices"
+  unit: "$"
+  preferred_direction: "down"
+  chart_type: "line"
+  chart_height: 250
+  display_priority: 3
+  category: "price_indicators"
+
+baltic_dry_index:
+  name: "Baltic Dry Index"
+  description: "The Baltic Dry Index is a shipping and trade index measuring changes in the cost of transporting various raw materials."
+  unit: ""
+  preferred_direction: "neutral"
+  chart_type: "line"
+  chart_height: 250
+  display_priority: 4
+  category: "price_indicators"
+
+dollar_index:
+  name: "US Dollar Index"
+  description: "The US Dollar Index measures the value of the US dollar relative to a basket of foreign currencies."
+  unit: ""
+  preferred_direction: "neutral"
+  chart_type: "line"
+  chart_height: 250
+  display_priority: 5
+  category: "price_indicators"
+
+supply_chain:
+  name: "Supply Chain Pressure Index"
+  description: "Tracks global supply chain conditions (negative values = lower pressure)"
+  unit: ""
+  preferred_direction: "down"
+  chart_type: "line"
+  chart_height: 300
+  display_priority: 1
+  category: "supply_chain"
+
+ppi_steel_scrap:
+  name: "Steel Scrap Price Index"
+  description: "Producer Price Index for Metals and Metal Products: Carbon Steel Scrap"
+  unit: ""
+  preferred_direction: "down"
+  chart_type: "line"
+  chart_height: 250
+  display_priority: 1
+  category: "input_costs"
+
+pmi_input_us:
+  name: "PMI Input Prices (Equipment)"
+  description: "PMI Input Prices index tracks price changes paid by manufacturers"
+  unit: ""
+  preferred_direction: "down"
+  chart_type: "line"
+  chart_height: 250
+  display_priority: 2
+  category: "input_costs"
+
+ism_supplier_deliveries:
+  name: "ISM Supplier Deliveries Index" 
+  description: "ISM Manufacturing Report on Business Supplier Deliveries Index. Values above 50 indicate slower deliveries, values below 50 indicate faster deliveries."
+  unit: ""
+  preferred_direction: "down"
+  chart_type: "line"
+  chart_height: 250
+  display_priority: 2
+  category: "supply_chain"
