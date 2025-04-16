@@ -1,0 +1,29 @@
+year,period,periodName,latest,value,footnotes,date,series_id
+2023,M01,January,,522.036,[{}],2023-01-01,WPU101211
+2023,M02,February,,555.481,[{}],2023-02-01,WPU101211
+2023,M03,March,,617.606,[{}],2023-03-01,WPU101211
+2023,M04,April,,606.297,[{}],2023-04-01,WPU101211
+2023,M05,May,,572.903,[{}],2023-05-01,WPU101211
+2023,M06,June,,517.804,[{}],2023-06-01,WPU101211
+2023,M07,July,,498.645,[{}],2023-07-01,WPU101211
+2023,M08,August,,503.72,[{}],2023-08-01,WPU101211
+2023,M09,September,,506.565,[{}],2023-09-01,WPU101211
+2023,M10,October,,495.634,[{}],2023-10-01,WPU101211
+2023,M11,November,,517.553,[{}],2023-11-01,WPU101211
+2023,M12,December,,568.841,[{}],2023-12-01,WPU101211
+2024,M01,January,,581.644,[{}],2024-01-01,WPU101211
+2024,M02,February,,566.228,[{}],2024-02-01,WPU101211
+2024,M03,March,,514.981,[{}],2024-03-01,WPU101211
+2024,M04,April,,501.229,[{}],2024-04-01,WPU101211
+2024,M05,May,,497.987,[{}],2024-05-01,WPU101211
+2024,M06,June,,479.97,[{}],2024-06-01,WPU101211
+2024,M07,July,,481.924,[{}],2024-07-01,WPU101211
+2024,M08,August,,481.431,[{}],2024-08-01,WPU101211
+2024,M09,September,,476.728,[{}],2024-09-01,WPU101211
+2024,M10,October,,487.426,[{}],2024-10-01,WPU101211
+2024,M11,November,,488.649,"[{'code': 'P', 'text': 'Preliminary. All indexes are subject to monthly revisions up to four months after original publication.'}]",2024-11-01,WPU101211
+2024,M12,December,,475.007,"[{'code': 'P', 'text': 'Preliminary. All indexes are subject to monthly revisions up to four months after original publication.'}]",2024-12-01,WPU101211
+2025,M01,January,,504.089,"[{'code': 'P', 'text': 'Preliminary. All indexes are subject to monthly revisions up to four months after original publication.'}]",2025-01-01,WPU101211
+2025,M02,February,true,562.32,"[{'code': 'P', 'text': 'Preliminary. All indexes are subject to monthly revisions up to four months after original publication.'}]",2025-02-01,WPU101211
+2024,M13,Annual,,502.767,"[{'code': 'P', 'text': 'Preliminary. All indexes are subject to monthly revisions up to four months after original publication.'}]",,WPU101211
+2023,M13,Annual,,540.257,[{}],,WPU101211

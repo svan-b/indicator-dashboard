@@ -1,0 +1,29 @@
+year,period,periodName,latest,value,footnotes,date,series_id
+2023,M01,January,,183.963,[{}],2023-01-01,PCU325180325180
+2023,M02,February,,184.191,[{}],2023-02-01,PCU325180325180
+2023,M03,March,,183.491,[{}],2023-03-01,PCU325180325180
+2023,M04,April,,180.409,[{}],2023-04-01,PCU325180325180
+2023,M05,May,,177.459,[{}],2023-05-01,PCU325180325180
+2023,M06,June,,174.994,[{}],2023-06-01,PCU325180325180
+2023,M07,July,,167.744,[{}],2023-07-01,PCU325180325180
+2023,M08,August,,166.695,[{}],2023-08-01,PCU325180325180
+2023,M09,September,,165.937,[{}],2023-09-01,PCU325180325180
+2023,M10,October,,162.512,[{}],2023-10-01,PCU325180325180
+2023,M11,November,,162.628,[{}],2023-11-01,PCU325180325180
+2023,M12,December,,162.329,[{}],2023-12-01,PCU325180325180
+2024,M01,January,,160.135,[{}],2024-01-01,PCU325180325180
+2024,M02,February,,158.09,[{}],2024-02-01,PCU325180325180
+2024,M03,March,,158.36,[{}],2024-03-01,PCU325180325180
+2024,M04,April,,157.737,[{}],2024-04-01,PCU325180325180
+2024,M05,May,,158.665,[{}],2024-05-01,PCU325180325180
+2024,M06,June,,158.816,[{}],2024-06-01,PCU325180325180
+2024,M07,July,,158.474,[{}],2024-07-01,PCU325180325180
+2024,M08,August,,158.42,[{}],2024-08-01,PCU325180325180
+2024,M09,September,,158.102,[{}],2024-09-01,PCU325180325180
+2024,M10,October,,157.152,[{}],2024-10-01,PCU325180325180
+2024,M11,November,,158.492,"[{'code': 'P', 'text': 'Preliminary. All indexes are subject to monthly revisions up to four months after original publication.'}]",2024-11-01,PCU325180325180
+2024,M12,December,,158.669,"[{'code': 'P', 'text': 'Preliminary. All indexes are subject to monthly revisions up to four months after original publication.'}]",2024-12-01,PCU325180325180
+2025,M01,January,,158.635,"[{'code': 'P', 'text': 'Preliminary. All indexes are subject to monthly revisions up to four months after original publication.'}]",2025-01-01,PCU325180325180
+2025,M02,February,true,159.064,"[{'code': 'P', 'text': 'Preliminary. All indexes are subject to monthly revisions up to four months after original publication.'}]",2025-02-01,PCU325180325180
+2024,M13,Annual,,158.426,"[{'code': 'P', 'text': 'Preliminary. All indexes are subject to monthly revisions up to four months after original publication.'}]",,PCU325180325180
+2023,M13,Annual,,172.696,[{}],,PCU325180325180

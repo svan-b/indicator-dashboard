@@ -1,0 +1,7 @@
+Date,value,lower_ci,upper_ci,source,indicator_id,unit,preferred_direction,description
+2025-03-31,198.4671659826018,192.45272469666364,204.48160726854,komatsu_equipment - FORECAST,komatsu_equipment,Index,down,Composite cost index for Komatsu Heavy Equipment based on weighted BLS PPI components
+2025-04-30,196.6074020870286,190.5929608010904,202.62184337296677,komatsu_equipment - FORECAST,komatsu_equipment,Index,down,Composite cost index for Komatsu Heavy Equipment based on weighted BLS PPI components
+2025-05-31,193.9566889588439,187.94224767290572,199.97113024478207,komatsu_equipment - FORECAST,komatsu_equipment,Index,down,Composite cost index for Komatsu Heavy Equipment based on weighted BLS PPI components
+2025-06-30,190.9548872356532,184.940445949715,196.96932852159136,komatsu_equipment - FORECAST,komatsu_equipment,Index,down,Composite cost index for Komatsu Heavy Equipment based on weighted BLS PPI components
+2025-07-31,188.1359314605656,182.1214901746274,194.15037274650376,komatsu_equipment - FORECAST,komatsu_equipment,Index,down,Composite cost index for Komatsu Heavy Equipment based on weighted BLS PPI components
+2025-08-31,185.9847627525566,179.97032146661843,191.99920403849478,komatsu_equipment - FORECAST,komatsu_equipment,Index,down,Composite cost index for Komatsu Heavy Equipment based on weighted BLS PPI components
