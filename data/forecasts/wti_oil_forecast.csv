@@ -1,7 +1,7 @@
-Date,value,lower_ci,upper_ci,source,indicator_id,unit,preferred_direction,description
-2025-04-30,69.70001924493572,58.862723049186584,80.53731544068485,wti_oil - FORECAST,wti_oil,$,neutral,"West Texas Intermediate Crude Oil price, the U.S. benchmark for oil prices. Rising prices may indicate economic growth but also increased input costs."
-2025-05-31,69.63622152230471,58.798925326555576,80.47351771805384,wti_oil - FORECAST,wti_oil,$,neutral,"West Texas Intermediate Crude Oil price, the U.S. benchmark for oil prices. Rising prices may indicate economic growth but also increased input costs."
-2025-06-30,69.43295630778408,58.59566011203495,80.27025250353321,wti_oil - FORECAST,wti_oil,$,neutral,"West Texas Intermediate Crude Oil price, the U.S. benchmark for oil prices. Rising prices may indicate economic growth but also increased input costs."
-2025-07-31,69.0229429250852,58.18564672933607,79.86023912083434,wti_oil - FORECAST,wti_oil,$,neutral,"West Texas Intermediate Crude Oil price, the U.S. benchmark for oil prices. Rising prices may indicate economic growth but also increased input costs."
-2025-08-31,68.39429870261941,57.557002506870276,79.23159489836854,wti_oil - FORECAST,wti_oil,$,neutral,"West Texas Intermediate Crude Oil price, the U.S. benchmark for oil prices. Rising prices may indicate economic growth but also increased input costs."
-2025-09-30,67.59372292575415,56.75642673000502,78.43101912150328,wti_oil - FORECAST,wti_oil,$,neutral,"West Texas Intermediate Crude Oil price, the U.S. benchmark for oil prices. Rising prices may indicate economic growth but also increased input costs."
+Date,value,lower_ci,upper_ci,source,indicator_id,unit,preferred_direction
+2025-05-01 17:12:03.329027,81.84214104616204,81.02371963570042,82.66056245662367,WTI Crude Oil Price - FORECAST (Sample),wti_oil,$,neutral
+2025-06-01 17:12:03.329027,82.07256093563164,80.84147252159717,83.3036493496661,WTI Crude Oil Price - FORECAST (Sample),wti_oil,$,neutral
+2025-07-01 17:12:03.329027,82.31596363740313,80.66964436465507,83.96228291015119,WTI Crude Oil Price - FORECAST (Sample),wti_oil,$,neutral
+2025-08-01 17:12:03.329027,83.29138743982766,81.20910275383197,85.37367212582335,WTI Crude Oil Price - FORECAST (Sample),wti_oil,$,neutral
+2025-09-01 17:12:03.329027,83.84462345062437,81.32928474710563,86.3599621541431,WTI Crude Oil Price - FORECAST (Sample),wti_oil,$,neutral
+2025-10-01 17:12:03.329027,82.78514778877675,79.88766761616957,85.68262796138393,WTI Crude Oil Price - FORECAST (Sample),wti_oil,$,neutral

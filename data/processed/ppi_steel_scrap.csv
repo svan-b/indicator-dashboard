@@ -1,0 +1,25 @@
+Date,value,monthly_change,yoy_change,source,indicator_id,unit,preferred_direction,description
+2023-05-01 17:12:03.329027,550.0,,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2023-06-01 17:12:03.329027,550.1058117143219,0.019238493513085153,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2023-07-01 17:12:03.329027,548.9919828956622,-0.20247537745304856,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2023-08-01 17:12:03.329027,555.9781780971048,1.2725495852587532,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2023-09-01 17:12:03.329027,560.365681112568,0.7891502199744549,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2023-10-01 17:12:03.329027,566.1199649611773,1.0268801324849974,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2023-11-01 17:12:03.329027,564.4176810009335,-0.3006931508519606,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2023-12-01 17:12:03.329027,555.573286891716,-1.5669945161060461,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-01-01 17:12:03.329027,549.0593526857472,-1.1724707360234121,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-02-01 17:12:03.329027,544.2107629640632,-0.8830720573225648,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-03-01 17:12:03.329027,534.813112579836,-1.7268402287824225,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-04-01 17:12:03.329027,526.9227562874175,-1.4753483238952203,,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-05-01 17:12:03.329027,529.3498993894601,0.4606259784913691,-3.754563747370887,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-06-01 17:12:03.329027,534.8821280440379,1.0450986504311421,-2.767410077497945,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-07-01 17:12:03.329027,542.3462912318575,1.3954781430283836,-1.2105261772224596,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-08-01 17:12:03.329027,548.9653098540286,1.2204413912625833,-1.261356743726605,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-09-01 17:12:03.329027,556.2684241289223,1.330341670739732,-0.7311755736916115,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-10-01 17:12:03.329027,564.1973414065512,1.425376119459787,-0.33961415841567977,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-11-01 17:12:03.329027,573.3374987139471,1.6200284256230768,1.5803575992153984,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2024-12-01 17:12:03.329027,563.2054840254353,-1.767199025223165,1.3737516388556914,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2025-01-01 17:12:03.329027,571.6142455389501,1.4930184012794445,4.107915245023097,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2025-02-01 17:12:03.329027,565.9301502150572,-0.9943935736824727,3.9909881849264917,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2025-03-01 17:12:03.329027,570.1402268120684,0.7439215944602617,6.605506372463665,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index
+2025-04-01 17:12:03.329027,568.499555693473,-0.28776624441484433,7.890492279930461,BLS Steel Scrap Price Index (Sample Data),ppi_steel_scrap,,neutral,Sample data for BLS Steel Scrap Price Index

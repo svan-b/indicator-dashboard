@@ -1,7 +1,7 @@
-Date,value,lower_ci,upper_ci,source,indicator_id,unit,preferred_direction,description
-2025-03-31,498.16736670403657,455.3435177532773,540.9912156547958,ppi_steel_scrap - FORECAST,ppi_steel_scrap,Index,neutral,Producer Price Index for Metals and Metal Products: Carbon Steel Scrap
-2025-04-30,475.663375033797,432.83952608303775,518.4872239845563,ppi_steel_scrap - FORECAST,ppi_steel_scrap,Index,neutral,Producer Price Index for Metals and Metal Products: Carbon Steel Scrap
-2025-05-31,452.54062121858294,409.71677226782367,495.3644701693422,ppi_steel_scrap - FORECAST,ppi_steel_scrap,Index,neutral,Producer Price Index for Metals and Metal Products: Carbon Steel Scrap
-2025-06-30,434.12646216623097,391.3026132154717,476.95031111699024,ppi_steel_scrap - FORECAST,ppi_steel_scrap,Index,neutral,Producer Price Index for Metals and Metal Products: Carbon Steel Scrap
-2025-07-31,424.48659062038337,381.6627416696241,467.31043957114264,ppi_steel_scrap - FORECAST,ppi_steel_scrap,Index,neutral,Producer Price Index for Metals and Metal Products: Carbon Steel Scrap
-2025-08-31,425.33563607315625,382.511787122397,468.1594850239155,ppi_steel_scrap - FORECAST,ppi_steel_scrap,Index,neutral,Producer Price Index for Metals and Metal Products: Carbon Steel Scrap
+Date,value,lower_ci,upper_ci,source,indicator_id,unit,preferred_direction
+2025-05-01 17:12:03.329027,567.4918029452302,561.8168849157779,573.1667209746826,BLS Steel Scrap Price Index - FORECAST (Sample),ppi_steel_scrap,,neutral
+2025-06-01 17:12:03.329027,567.5351664038635,559.0221389078056,576.0481938999214,BLS Steel Scrap Price Index - FORECAST (Sample),ppi_steel_scrap,,neutral
+2025-07-01 17:12:03.329027,570.2030935072108,558.7990316370666,581.6071553773551,BLS Steel Scrap Price Index - FORECAST (Sample),ppi_steel_scrap,,neutral
+2025-08-01 17:12:03.329027,570.6567338035675,556.3903154584783,584.9231521486566,BLS Steel Scrap Price Index - FORECAST (Sample),ppi_steel_scrap,,neutral
+2025-09-01 17:12:03.329027,575.8063378619386,558.5321477260804,593.0805279977967,BLS Steel Scrap Price Index - FORECAST (Sample),ppi_steel_scrap,,neutral
+2025-10-01 17:12:03.329027,569.9540185860346,550.0056279355234,589.9024092365459,BLS Steel Scrap Price Index - FORECAST (Sample),ppi_steel_scrap,,neutral

@@ -8,6 +8,8 @@ import os
 import sys
 import subprocess
 import logging
+import shutil
+import glob
 
 # Set up logging
 logging.basicConfig(
@@ -21,6 +23,57 @@ logging.basicConfig(
 
 logger = logging.getLogger(__name__)
 
+def ensure_data_dirs():
+    """Ensure data directories exist and are properly set up."""
+    data_dir = "data"
+    subdirs = ["raw", "processed", "forecasts"]
+    
+    # Check if data directory exists
+    if not os.path.exists(data_dir):
+        logger.info(f"Creating data directory at {data_dir}")
+        os.makedirs(data_dir, exist_ok=True)
+    
+    # Create subdirectories
+    for subdir in subdirs:
+        subdir_path = os.path.join(data_dir, subdir)
+        if not os.path.exists(subdir_path):
+            logger.info(f"Creating {subdir} subdirectory")
+            os.makedirs(subdir_path, exist_ok=True)
+    
+    # Look for data files in indicator_data directory
+    indicator_data_dir = os.path.expanduser("~/Commercial and Market Research/indicator_data")
+    alt_data_dir = os.path.expanduser("~/Commercial and Market Research/Economic_Dashboard_Modular/data")
+    
+    data_sources = [
+        (os.path.join(indicator_data_dir, "raw"), os.path.join(data_dir, "raw")),
+        (os.path.join(indicator_data_dir, "processed"), os.path.join(data_dir, "processed")),
+        (os.path.join(indicator_data_dir, "forecasts"), os.path.join(data_dir, "forecasts")),
+        (os.path.join(alt_data_dir, "raw"), os.path.join(data_dir, "raw")),
+        (os.path.join(alt_data_dir, "processed"), os.path.join(data_dir, "processed")),
+        (os.path.join(alt_data_dir, "forecasts"), os.path.join(data_dir, "forecasts"))
+    ]
+    
+    files_copied = 0
+    
+    # Try to copy data files if data directories are empty
+    for src_dir, dest_dir in data_sources:
+        if os.path.exists(src_dir):
+            logger.info(f"Found source directory: {src_dir}")
+            for file in glob.glob(os.path.join(src_dir, "*.csv")):
+                dest_file = os.path.join(dest_dir, os.path.basename(file))
+                if not os.path.exists(dest_file):
+                    try:
+                        shutil.copy(file, dest_file)
+                        logger.info(f"Copied {file} to {dest_file}")
+                        files_copied += 1
+                    except Exception as e:
+                        logger.error(f"Error copying {file}: {e}")
+    
+    if files_copied > 0:
+        logger.info(f"Copied {files_copied} data files to local data directory")
+    else:
+        logger.warning("No data files were copied. Sample data may be used instead.")
+
 def run_dashboard():
     """Run the Streamlit dashboard with improved path handling."""
     # Get absolute path to project directory
@@ -33,6 +86,9 @@ def run_dashboard():
     
     logger.info(f"Current directory: {current_dir}")
     logger.info(f"Project root: {project_root}")
+    
+    # Ensure data directories exist and contain data
+    ensure_data_dirs()
     
     # Log information about file structure
     logger.info("Checking file structure...")
@@ -49,12 +105,6 @@ def run_dashboard():
                 main_py = os.path.join(root, "main.py")
                 logger.info(f"Found main.py at alternative location: {main_py}")
                 break
-    
-    # Create the necessary directory structure if it doesn't exist
-    data_dir = os.path.join(project_root, "data")
-    os.makedirs(data_dir, exist_ok=True)
-    for subdir in ["raw", "processed", "forecasts"]:
-        os.makedirs(os.path.join(data_dir, subdir), exist_ok=True)
     
     # Log Python path
     logger.info(f"Current Python path: {sys.path}")
@@ -75,7 +125,19 @@ def run_dashboard():
     
     try:
         streamlit_cmd = ["streamlit", "run"]
-        streamlit_args = [main_py]
+        
+        # Determine which file to run: main.py or streamlit_app.py (for local or cloud)
+        if os.path.exists("streamlit_app.py"):
+            app_file = "streamlit_app.py"
+            logger.info("Using streamlit_app.py (Cloud-compatible entry point)")
+        elif os.path.exists(main_py):
+            app_file = main_py
+            logger.info(f"Using main.py at {main_py}")
+        else:
+            logger.error("Could not find either streamlit_app.py or main.py!")
+            sys.exit(1)
+            
+        streamlit_args = [app_file]
         
         # Check if we're using a custom port
         port = os.environ.get("STREAMLIT_PORT")

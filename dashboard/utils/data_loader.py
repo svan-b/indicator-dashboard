@@ -5,38 +5,85 @@ import pandas as pd
 import numpy as np
 from datetime import datetime
 import logging
+import inspect
+import glob
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
 
-# Base data directory - improved path resolution
+# Enhanced debug logging to help identify file location issues
+def log_debug_info():
+    """Print detailed debug info to help diagnose data access problems."""
+    # Print caller information
+    caller_frame = inspect.currentframe().f_back
+    caller_info = inspect.getframeinfo(caller_frame)
+    logger.info(f"Called from: {caller_info.filename}, line {caller_info.lineno}")
+    
+    # Print current environment
+    logger.info(f"Current working directory: {os.getcwd()}")
+    cwd_contents = os.listdir('.')
+    logger.info(f"Current directory contents: {cwd_contents}")
+    
+    # Check if data directory exists
+    if 'data' in cwd_contents:
+        logger.info(f"Data directory found in current directory")
+        data_contents = os.listdir('data')
+        logger.info(f"Data directory contents: {data_contents}")
+        
+        # Check subdirectories
+        for subdir in ['raw', 'processed', 'forecasts']:
+            subdir_path = os.path.join('data', subdir)
+            if os.path.exists(subdir_path):
+                logger.info(f"Found {subdir} subdirectory")
+                logger.info(f"{subdir} contents: {os.listdir(subdir_path)}")
+            else:
+                logger.warning(f"{subdir} subdirectory not found")
+    else:
+        logger.warning("Data directory not found in current directory")
+        
+    # Additional environment info for Streamlit Cloud
+    is_streamlit_cloud = os.environ.get('STREAMLIT_SHARING', '') == 'True'
+    logger.info(f"Running in Streamlit Cloud: {is_streamlit_cloud}")
+
+# Get base data directory
 def get_data_dir():
     """Get data directory with more robust path handling for Streamlit Cloud."""
+    log_debug_info()  # Log detailed debug info
     
-    # Streamlit Cloud prioritization - look for data directory in repo root
+    # For Streamlit Cloud - prioritize repo root 'data' directory 
     if os.path.exists("data"):
         logger.info("Using data directory at project root (Streamlit Cloud compatible)")
+        data_contents = os.listdir("data")
+        logger.info(f"Data directory contains: {data_contents}")
         return "data"
     
-    # For local development
+    # For local development - try multiple paths
     potential_paths = [
         os.path.join(os.getcwd(), "data"),
         os.path.join(os.path.dirname(os.getcwd()), "data"),
         os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), "data"),
         os.path.join(os.path.expanduser("~"), "Commercial and Market Research", "indicator_data"),
+        os.path.join(os.path.expanduser("~"), "Commercial and Market Research", "Economic_Dashboard_Modular", "data"),
         r"C:\Users\vanbo\Commercial and Market Research\indicator_data",
+        r"C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\data",
     ]
     
     for path in potential_paths:
         if os.path.exists(path):
             logger.info(f"Found data directory at: {path}")
+            logger.info(f"Directory contents: {os.listdir(path)}")
             return path
     
     # If no existing path found, create and use the repo-root path
     default_path = "data"
     logger.info(f"No existing data directory found. Creating at: {default_path}")
     os.makedirs(default_path, exist_ok=True)
+    
+    # Create subdirectories
+    for subdir in ['raw', 'processed', 'forecasts']:
+        os.makedirs(os.path.join(default_path, subdir), exist_ok=True)
+        
     return default_path
 
 def verify_data_availability():
@@ -49,25 +96,28 @@ def verify_data_availability():
         "forecasts": os.path.join(data_dir, "forecasts")
     }
     
+    files_found = False
+    
     for dir_name, dir_path in directories.items():
         if os.path.exists(dir_path):
             files = os.listdir(dir_path)
             logger.info(f"Found {len(files)} files in {dir_name} directory")
             if len(files) > 0:
                 logger.info(f"Sample files: {', '.join(files[:5])}")
+                files_found = True
             if not files:
                 logger.warning(f"No files found in {dir_name} directory")
+                # Make directory if it doesn't exist
+                os.makedirs(dir_path, exist_ok=True)
         else:
             logger.error(f"Directory not found: {dir_path}")
             os.makedirs(dir_path, exist_ok=True)
             logger.info(f"Created empty directory: {dir_path}")
     
-    return all(os.path.exists(dir_path) for dir_path in directories.values())
-
-# Get base data directory
-BASE_DATA_DIR = get_data_dir()
+    return files_found
 
 # Set up subdirectories
+BASE_DATA_DIR = get_data_dir()
 RAW_DIR = os.path.join(BASE_DATA_DIR, "raw")
 PROCESSED_DIR = os.path.join(BASE_DATA_DIR, "processed")
 FORECASTS_DIR = os.path.join(BASE_DATA_DIR, "forecasts")
@@ -75,6 +125,25 @@ FORECASTS_DIR = os.path.join(BASE_DATA_DIR, "forecasts")
 # Ensure directories exist
 for directory in [RAW_DIR, PROCESSED_DIR, FORECASTS_DIR]:
     os.makedirs(directory, exist_ok=True)
+
+def find_files_recursive(base_dir, pattern):
+    """Find files matching pattern recursively in the base directory."""
+    matches = []
+    
+    # First look in the exact directory
+    direct_matches = glob.glob(os.path.join(base_dir, pattern))
+    if direct_matches:
+        matches.extend(direct_matches)
+        
+    # Then search recursively 1 level down
+    for subdir in os.listdir(base_dir):
+        subdir_path = os.path.join(base_dir, subdir)
+        if os.path.isdir(subdir_path):
+            subdir_matches = glob.glob(os.path.join(subdir_path, pattern))
+            if subdir_matches:
+                matches.extend(subdir_matches)
+    
+    return matches
 
 def load_indicator_data(indicator_id):
     """Load indicator data from files or generate sample data if not available."""
@@ -92,16 +161,66 @@ def load_indicator_data(indicator_id):
         os.path.join(BASE_DATA_DIR, f"{indicator_id}.csv")
     ]
     
+    # Log all possible paths we're checking
+    logger.info(f"Checking for {indicator_id} data in the following paths:")
+    for file_path in possible_files:
+        logger.info(f"  - {file_path} (exists: {os.path.exists(file_path)})")
+
+    # Try to locate files more aggressively using recursive search
+    if not any(os.path.exists(file_path) for file_path in possible_files):
+        logger.info(f"No exact file matches found, trying recursive search")
+        
+        # Look for any CSV file with indicator_id in the name
+        recursive_matches = []
+        for pattern in [f"{indicator_id}*.csv", f"*{indicator_id}*.csv"]:
+            recursive_matches.extend(find_files_recursive(BASE_DATA_DIR, pattern))
+        
+        if recursive_matches:
+            logger.info(f"Found {len(recursive_matches)} potential matches through recursive search")
+            for match in recursive_matches:
+                logger.info(f"  - {match}")
+            
+            # Add these matches to our possible_files list
+            possible_files.extend(recursive_matches)
+    
+    # Try each possible file path
     for file_path in possible_files:
         if os.path.exists(file_path):
             try:
                 logger.info(f"Loading data from: {file_path}")
                 df = pd.read_csv(file_path)
-                df['Date'] = pd.to_datetime(df['Date'])
                 
-                # Important: Do NOT filter out future dates
-                # current_date = datetime.now()
-                # df = df[df['Date'] <= current_date]
+                # Check if DataFrame is empty
+                if df.empty:
+                    logger.warning(f"File {file_path} exists but contains no data")
+                    continue
+                
+                # Check for required columns
+                if 'Date' not in df.columns or 'value' not in df.columns:
+                    logger.warning(f"File {file_path} is missing required columns 'Date' or 'value'")
+                    if 'Date' not in df.columns:
+                        # Try to find date-like column
+                        date_cols = [col for col in df.columns if 'date' in col.lower() or 'time' in col.lower()]
+                        if date_cols:
+                            logger.info(f"Using {date_cols[0]} as Date column")
+                            df['Date'] = df[date_cols[0]]
+                    
+                    if 'value' not in df.columns:
+                        # Try to find value-like column
+                        numeric_cols = df.select_dtypes(include=['number']).columns
+                        if len(numeric_cols) > 0:
+                            # Exclude date-like columns from numeric columns
+                            value_cols = [col for col in numeric_cols if not any(x in col.lower() for x in ['date', 'time', 'year', 'month', 'day'])]
+                            if value_cols:
+                                logger.info(f"Using {value_cols[0]} as value column")
+                                df['value'] = df[value_cols[0]]
+                
+                if 'Date' not in df.columns or 'value' not in df.columns:
+                    logger.warning(f"Could not resolve missing required columns in {file_path}")
+                    continue
+                
+                # Process the data
+                df['Date'] = pd.to_datetime(df['Date'])
                 
                 # Add missing columns if needed
                 if 'monthly_change' not in df.columns and 'value' in df.columns and len(df) > 1:
@@ -126,7 +245,7 @@ def load_indicator_data(indicator_id):
                 logger.error(f"Error reading file {file_path} for {indicator_id}: {e}")
     
     # If no file data available, use sample data
-    logger.warning(f"No data files found for {indicator_id}. Using sample data.")
+    logger.warning(f"No valid data files found for {indicator_id}. Using sample data.")
     using_sample_data = True
     df = generate_sample_data(indicator_id)
     data_source = f"Sample data ({get_default_source_name(indicator_id)})"
@@ -146,16 +265,54 @@ def load_forecast_data(indicator_id):
         os.path.join(BASE_DATA_DIR, f"{indicator_id}_forecast.csv"),
     ]
     
+    # Enhanced logging
+    logger.info(f"Checking for {indicator_id} forecast in the following paths:")
+    for file_path in possible_files:
+        logger.info(f"  - {file_path} (exists: {os.path.exists(file_path)})")
+    
+    # Try to locate files more aggressively using recursive search
+    if not any(os.path.exists(file_path) for file_path in possible_files):
+        logger.info(f"No exact forecast file matches found, trying recursive search")
+        
+        # Look for any CSV file with indicator_id and forecast in the name
+        recursive_matches = []
+        for pattern in [f"{indicator_id}*forecast*.csv", f"*forecast*{indicator_id}*.csv"]:
+            recursive_matches.extend(find_files_recursive(BASE_DATA_DIR, pattern))
+        
+        if recursive_matches:
+            logger.info(f"Found {len(recursive_matches)} potential forecast matches through recursive search")
+            for match in recursive_matches:
+                logger.info(f"  - {match}")
+            
+            # Add these matches to our possible_files list
+            possible_files.extend(recursive_matches)
+    
     for file_path in possible_files:
         if os.path.exists(file_path):
             try:
                 logger.info(f"Loading forecast data from: {file_path}")
                 df = pd.read_csv(file_path)
+                
+                # Check if DataFrame is empty
+                if df.empty:
+                    logger.warning(f"Forecast file {file_path} exists but contains no data")
+                    continue
+                
+                # Check for required columns
+                if 'Date' not in df.columns or 'value' not in df.columns:
+                    logger.warning(f"Forecast file {file_path} is missing required columns")
+                    continue
+                
                 df['Date'] = pd.to_datetime(df['Date'])
                 
                 # Filter to keep only forecasts for current month and future
                 current_month = datetime.now().replace(day=1)
                 df = df[df['Date'] >= current_month]
+                
+                # Skip if filtered dataframe is empty (no future forecasts)
+                if df.empty:
+                    logger.warning(f"Forecast file {file_path} has no future forecasts")
+                    continue
                 
                 # Add missing columns if needed
                 if 'indicator_id' not in df.columns:
@@ -520,6 +677,14 @@ def generate_sample_data(indicator_id):
         base_value = 175.0
         trend = 0.35
         volatility = 1.8
+    elif indicator_id == 'wti_oil':
+        base_value = 75.0
+        trend = 0.2
+        volatility = 2.5
+    elif indicator_id == 'supply_chain':
+        base_value = 0.5
+        trend = -0.1
+        volatility = 0.2
     
     # Generate values with realistic patterns
     values = []
@@ -591,6 +756,10 @@ def generate_sample_forecast(indicator_id):
         base_value = 220.0
     elif 'explosives' in indicator_id:
         base_value = 175.0
+    elif indicator_id == 'wti_oil':
+        base_value = 75.0
+    elif indicator_id == 'supply_chain':
+        base_value = 0.5
     
     # Generate forecast values with mild trend and some volatility
     values = []
