@@ -195,7 +195,7 @@ def create_correlation_matrix_chart(corr_matrix):
                 )
             )
     
-    # Update layout
+    # Update layout - FIX HERE: Removed titleside from coloraxis_colorbar
     fig.update_layout(
         height=600,
         margin=dict(l=50, r=50, t=30, b=30),
@@ -204,8 +204,7 @@ def create_correlation_matrix_chart(corr_matrix):
         font=dict(color='#333333', size=12),
         annotations=annotations,
         coloraxis_colorbar=dict(
-            title="Correlation",
-            titleside="right",
+            title="Correlation", 
             tickvals=[-1, -0.5, 0, 0.5, 1],
             ticktext=["-1.0", "-0.5", "0.0", "0.5", "1.0"]
         )
