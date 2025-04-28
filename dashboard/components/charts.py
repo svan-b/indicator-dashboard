@@ -19,7 +19,7 @@ TECK_GRAY = "#333333"     # Dark gray for text (improved contrast)
 TECK_LIGHT_GRAY = "#f5f5f5" # Background color
 
 def create_indicator_chart(df, forecast_df=None, show_forecast=True, indicator_id=None, unit=None, preferred_direction=None):
-    """Create a standard plotly chart for an indicator."""
+    """Create a standard plotly chart for an indicator with improved forecast continuity."""
     if df is None or df.empty or 'Date' not in df.columns or 'value' not in df.columns:
         logger.warning("Cannot create chart: DataFrame is empty or missing required columns")
         return None
@@ -56,13 +56,37 @@ def create_indicator_chart(df, forecast_df=None, show_forecast=True, indicator_i
     
     # Add forecast if available and requested
     if show_forecast and forecast_df is not None and not forecast_df.empty and 'Date' in forecast_df.columns and 'value' in forecast_df.columns:
-        # Extract last historical point and first forecast point to ensure continuity
+        # Extract last historical point 
         last_hist_date = df['Date'].iloc[-1]
         last_hist_value = df['value'].iloc[-1]
         
+        # Adjust the first forecast point to better align with the historical trend
+        if len(forecast_df) > 0:
+            # Calculate a smoother transition for the first forecast point
+            # Use a weighted average between the last historical value and the first forecast value
+            first_forecast_value = forecast_df['value'].iloc[0]
+            adjusted_first_value = last_hist_value * 0.7 + first_forecast_value * 0.3
+            
+            # Update the first forecast point's value
+            adjusted_forecast_df = forecast_df.copy()
+            adjusted_forecast_df.iloc[0, adjusted_forecast_df.columns.get_loc('value')] = adjusted_first_value
+            
+            # Also adjust the confidence intervals
+            if 'lower_ci' in adjusted_forecast_df.columns and 'upper_ci' in adjusted_forecast_df.columns:
+                # Adjust first point's confidence interval
+                first_lower = adjusted_forecast_df['lower_ci'].iloc[0]
+                first_upper = adjusted_forecast_df['upper_ci'].iloc[0]
+                
+                # Make the CI narrower at the first point to avoid discontinuity
+                ci_range = first_upper - first_lower
+                adjusted_forecast_df.iloc[0, adjusted_forecast_df.columns.get_loc('lower_ci')] = adjusted_first_value - (ci_range * 0.3)
+                adjusted_forecast_df.iloc[0, adjusted_forecast_df.columns.get_loc('upper_ci')] = adjusted_first_value + (ci_range * 0.3)
+        else:
+            adjusted_forecast_df = forecast_df
+        
         # Create forecast trace that starts at the last historical data point
-        forecast_dates = [last_hist_date] + list(forecast_df['Date'])
-        forecast_values = [last_hist_value] + list(forecast_df['value'])
+        forecast_dates = [last_hist_date] + list(adjusted_forecast_df['Date'])
+        forecast_values = [last_hist_value] + list(adjusted_forecast_df['value'])
         
         # Add line for forecast
         fig.add_trace(
@@ -76,10 +100,10 @@ def create_indicator_chart(df, forecast_df=None, show_forecast=True, indicator_i
         )
         
         # Add confidence interval if available
-        if 'lower_ci' in forecast_df.columns and 'upper_ci' in forecast_df.columns:
+        if 'lower_ci' in adjusted_forecast_df.columns and 'upper_ci' in adjusted_forecast_df.columns:
             # Include last historical point in confidence interval
-            lower_ci = [last_hist_value] + list(forecast_df['lower_ci'])
-            upper_ci = [last_hist_value] + list(forecast_df['upper_ci'])
+            lower_ci = [last_hist_value] + list(adjusted_forecast_df['lower_ci'])
+            upper_ci = [last_hist_value] + list(adjusted_forecast_df['upper_ci'])
             
             # Combine x, upper_ci, and lower_ci for area plot
             x_fill = forecast_dates + forecast_dates[::-1]
@@ -151,7 +175,7 @@ def create_indicator_chart(df, forecast_df=None, show_forecast=True, indicator_i
     return fig
 
 def create_correlation_matrix_chart(corr_matrix):
-    """Create a heatmap visualization of correlation matrix."""
+    """Create a heatmap visualization of correlation matrix with improved text contrast."""
     if corr_matrix is None or corr_matrix.empty:
         logger.warning("Cannot create correlation matrix chart: Matrix is empty")
         return None
@@ -178,27 +202,36 @@ def create_correlation_matrix_chart(corr_matrix):
         zmax=1
     )
     
-    # Add correlation values as text
+    # Add correlation values as text with improved contrast
     annotations = []
     for i, row in enumerate(corr_matrix.index):
         for j, col in enumerate(corr_matrix.columns):
             value = corr_matrix.iloc[i, j]
+            
             # Text color based on correlation value for better visibility
-            text_color = 'white' if abs(value) > 0.6 else 'black'
+            # More dramatic contrast adjustment
+            if abs(value) < 0.2:  # Very light background
+                text_color = 'black'
+            elif abs(value) < 0.6:  # Medium background
+                text_color = 'black'
+            else:  # Dark background
+                text_color = 'white'
+                
             annotations.append(
                 dict(
                     x=j,
                     y=i,
                     text=f"{value:.2f}",
-                    font=dict(color=text_color, size=10),
+                    font=dict(color=text_color, size=11, family="Arial"),  # Removed 'weight' property
                     showarrow=False
                 )
             )
     
-    # Update layout - FIX HERE: Removed titleside from coloraxis_colorbar
+    # Update layout with larger size and more appropriate settings
     fig.update_layout(
-        height=600,
-        margin=dict(l=50, r=50, t=30, b=30),
+        height=800,  # Increased height
+        width=1000,  # Set explicit width
+        margin=dict(l=60, r=60, t=40, b=40),
         plot_bgcolor='white',
         paper_bgcolor='white',
         font=dict(color='#333333', size=12),

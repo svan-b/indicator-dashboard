@@ -4,10 +4,30 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import logging
+from datetime import datetime
 
 # Set up logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
+
+def get_valid_update_date(date_value):
+    """Ensure the last updated date is not in the future."""
+    try:
+        # Convert to datetime if it's not already
+        if not isinstance(date_value, datetime):
+            date_value = pd.to_datetime(date_value)
+        
+        # Check if date is in the future
+        now = datetime.now()
+        if date_value > now:
+            # Return current date if future date detected
+            logger.warning(f"Future date detected: {date_value}. Using current date instead.")
+            return now.strftime('%b %d, %Y')
+        
+        return date_value.strftime('%b %d, %Y')
+    except Exception as e:
+        logger.error(f"Error formatting date: {e}")
+        return "Unknown"
 
 def create_indicator_card(indicator_id, indicator_info, show_forecast=True, use_absolute=False):
     """Create a standardized card for displaying an economic indicator with improved error handling."""
@@ -56,7 +76,7 @@ def create_indicator_card(indicator_id, indicator_info, show_forecast=True, use_
                 unsafe_allow_html=True
             )
         
-        # Monthly change
+        # Monthly change - UPDATED with better labels and explanations
         with col2:
             if 'monthly_change' in latest_data and not pd.isna(latest_data['monthly_change']):
                 change_text, change_style = format_change(
@@ -65,19 +85,24 @@ def create_indicator_card(indicator_id, indicator_info, show_forecast=True, use_
                     use_absolute=use_absolute
                 )
                 
-                # Get impact indicator
-                indicator_symbol, impact_class, _ = get_impact_indicator(
+                # Get impact indicator with the indicator_id passed for better context
+                indicator_symbol, impact_class, impact_type = get_impact_indicator(
                     latest_data['monthly_change'],
                     preferred_direction,
-                    use_absolute=use_absolute
+                    use_absolute=use_absolute,
+                    indicator_id=indicator_id
                 )
+                
+                # Add explanation of direction
+                direction_explanation = "(better)" if impact_type == "positive" else "(worse)" if impact_type == "negative" else ""
                 
                 st.markdown(
                     f"""
                     <div style="text-align: center;">
-                        <div style="font-size: 1rem; color: #333333; font-weight: 600;">Monthly</div>
+                        <div style="font-size: 1rem; color: #333333; font-weight: 600;">Month-over-Month</div>
                         <div style="font-size: 1.3rem;" class="{change_style}">{change_text}</div>
                         <div class="impact-indicator impact-{impact_class.split('-')[0]}" style="margin-top: 5px;">{indicator_symbol}</div>
+                        <div style="font-size: 0.8rem; margin-top: 3px;">{direction_explanation}</div>
                     </div>
                     """,
                     unsafe_allow_html=True
@@ -86,14 +111,14 @@ def create_indicator_card(indicator_id, indicator_info, show_forecast=True, use_
                 st.markdown(
                     """
                     <div style="text-align: center;">
-                        <div style="font-size: 1rem; color: #333333; font-weight: 600;">Monthly</div>
+                        <div style="font-size: 1rem; color: #333333; font-weight: 600;">Month-over-Month</div>
                         <div style="font-size: 1.3rem;">N/A</div>
                     </div>
                     """,
                     unsafe_allow_html=True
                 )
         
-        # Year-over-year change
+        # Year-over-year change - UPDATED with better labels and explanations
         with col3:
             if 'yoy_change' in latest_data and not pd.isna(latest_data['yoy_change']):
                 change_text, change_style = format_change(
@@ -102,12 +127,16 @@ def create_indicator_card(indicator_id, indicator_info, show_forecast=True, use_
                     use_absolute=use_absolute
                 )
                 
-                # Get impact indicator
-                indicator_symbol, impact_class, _ = get_impact_indicator(
+                # Get impact indicator with the indicator_id passed for better context
+                indicator_symbol, impact_class, impact_type = get_impact_indicator(
                     latest_data['yoy_change'],
                     preferred_direction,
-                    use_absolute=use_absolute
+                    use_absolute=use_absolute,
+                    indicator_id=indicator_id
                 )
+                
+                # Add explanation of direction
+                direction_explanation = "(better)" if impact_type == "positive" else "(worse)" if impact_type == "negative" else ""
                 
                 st.markdown(
                     f"""
@@ -115,6 +144,7 @@ def create_indicator_card(indicator_id, indicator_info, show_forecast=True, use_
                         <div style="font-size: 1rem; color: #333333; font-weight: 600;">Year-over-Year</div>
                         <div style="font-size: 1.3rem;" class="{change_style}">{change_text}</div>
                         <div class="impact-indicator impact-{impact_class.split('-')[0]}" style="margin-top: 5px;">{indicator_symbol}</div>
+                        <div style="font-size: 0.8rem; margin-top: 3px;">{direction_explanation}</div>
                     </div>
                     """,
                     unsafe_allow_html=True
@@ -165,7 +195,7 @@ def create_indicator_card(indicator_id, indicator_info, show_forecast=True, use_
             logger.error(f"Error creating chart for {indicator_id}: {e}")
             st.warning("Error generating chart for this indicator")
         
-        # Add forecast note if available and requested
+        # Add forecast note if available and requested - COMPLETELY REVISED SECTION
         if show_forecast:
             from dashboard.utils.data_loader import load_forecast_data
             try:
@@ -175,6 +205,7 @@ def create_indicator_card(indicator_id, indicator_info, show_forecast=True, use_
                     if not forecast_df.empty and len(forecast_df) > 0:
                         last_forecast = forecast_df.iloc[-1]
                         forecast_change = last_forecast['value'] - latest_data['value']
+                        forecast_date = pd.to_datetime(last_forecast['Date']).strftime('%b %Y') if 'Date' in last_forecast else "future"
                         
                         # Determine if we should show absolute or percentage change
                         if use_absolute:
@@ -189,22 +220,36 @@ def create_indicator_card(indicator_id, indicator_info, show_forecast=True, use_
                                 change_value = 0
                                 change_str = "0.00%"
                         
-                        # Determine forecast impact based on preferred direction
-                        if preferred_direction == 'down':
-                            forecast_impact = "negative" if forecast_change > 0 else "positive"
-                        elif preferred_direction == 'up':
-                            forecast_impact = "positive" if forecast_change > 0 else "negative"
-                        else:
-                            forecast_impact = "neutral"
+                        # Determine forecast impact based on preferred direction or indicator-specific logic
+                        impact_type = get_impact_indicator(
+                            forecast_change,
+                            preferred_direction,
+                            use_absolute=use_absolute,
+                            indicator_id=indicator_id
+                        )[2]  # Get just the impact type
                         
-                        forecast_date = pd.to_datetime(last_forecast['Date']).strftime('%b %Y') if 'Date' in last_forecast else "future"
+                        forecast_impact = impact_type
+                        impact_description = "positive impact (better)" if impact_type == "positive" else "negative impact (worse)" if impact_type == "negative" else "neutral impact"
+                        
                         unit_prefix = "$" if latest_data.get('unit') == '$' else ""
                         
+                        # Traffic light indicator based on impact
+                        traffic_light_class = "red" if forecast_impact == "negative" else "green" if forecast_impact == "positive" else "yellow"
+                        
+                        # Improved forecast section with better explanation
                         st.markdown(
                             f"""
                             <div class="forecast-section">
-                            <strong>Forecast:</strong> {unit_prefix}{last_forecast['value']:.2f} by {forecast_date} 
-                            <span class="{forecast_impact}-impact">({change_str} change, {forecast_impact} impact)</span>
+                                <div style="display: flex; align-items: center; margin-bottom: 5px;">
+                                    <div class="impact-traffic-light impact-{traffic_light_class}"></div>
+                                    <strong>Forecast:</strong> {unit_prefix}{last_forecast['value']:.2f} by {forecast_date}
+                                </div>
+                                <span class="{forecast_impact}-impact">
+                                    {change_str} change from current value ({impact_description})
+                                </span><br/>
+                                <span style="font-size: 0.85rem; font-style: italic; margin-top: 5px; display: block;">
+                                    This forecast shows the predicted future value compared to today's value of {unit_prefix}{latest_data['value']:.2f}.
+                                </span>
                             </div>
                             """,
                             unsafe_allow_html=True
@@ -218,12 +263,20 @@ def create_indicator_card(indicator_id, indicator_info, show_forecast=True, use_
                         unsafe_allow_html=True)
         
         # Add sample data warning if applicable
-        if using_sample_data:
-            st.markdown('<p class="sample-data-warning">⚠️ Using sample data as actual data could not be loaded.</p>', 
+        is_sample = using_sample_data or 'sample' in data_source.lower() or 'SAMPLE' in data_source
+        if 'source' in df.columns:
+            if any(df['source'].str.contains('sample', case=False)) or any(df['source'].str.contains('SAMPLE')):
+                is_sample = True
+
+        if is_sample:
+            st.markdown('<div class="sample-data-warning"><strong>⚠️ SAMPLE DATA:</strong> Displaying generated sample data as actual data could not be loaded.</div>',
                         unsafe_allow_html=True)
         
         # Add last updated badge
-        last_updated = pd.to_datetime(latest_data['Date']).strftime('%b %d, %Y') if 'Date' in latest_data else "Unknown"
+        if 'Date' in latest_data:
+            last_updated = get_valid_update_date(latest_data['Date'])
+        else:
+            last_updated = "Unknown"
         st.markdown(f"<p>Last updated: <span class='last-updated-badge'>{last_updated}</span></p>", unsafe_allow_html=True)
         
         # Close the card container
@@ -273,23 +326,71 @@ def format_change(change, preferred_direction='neutral', use_absolute=False):
         
         return f"{sign}{change:.2f}%", style
 
-def get_impact_indicator(change, preferred_direction='neutral', use_absolute=False):
-    """Return impact indicator (↑/↓) with styling classes."""
+def get_impact_indicator(change, preferred_direction='neutral', use_absolute=False, indicator_id=None):
+    """Return impact indicator (↑/↓) with styling classes, properly accounting for business impact."""
     if pd.isna(change):
         return "", "neutral-impact", "neutral"
     
+    # Set significance thresholds - these determine when a change is significant enough to have an impact
+    significance_threshold = 2.0  # Default for percentage changes
+    
+    if use_absolute:
+        significance_threshold = 0.1  # Different threshold for absolute changes (like supply chain index)
+    
+    # Check if the change is significant
+    is_significant = abs(change) > significance_threshold
+    
+    # Handle special cases for specific indicators
+    if indicator_id:
+        # For commodity prices like oil, significant decreases are positive for most businesses (reduced costs)
+        if indicator_id in ['wti_oil', 'ppi_steel_scrap']:
+            preferred_direction = 'down'
+        
+        # For dollar index, weaker dollar (going down) tends to help US exporters
+        elif indicator_id == 'dollar_index':
+            preferred_direction = 'down'
+        
+        # For Baltic Dry Index, changes indicate shipping cost changes, lower is generally better
+        elif indicator_id == 'baltic_dry_index':
+            preferred_direction = 'down'
+    
     if preferred_direction == 'down':
-        # For metrics where decrease is good (like supply chain pressure)
-        impact = "positive" if change < 0 else "negative"
+        # For metrics where decrease is good (like supply chain pressure, costs)
+        impact = "positive" if change < 0 else ("negative" if is_significant else "neutral")
         indicator = "↓" if change < 0 else "↑"
     elif preferred_direction == 'up':
         # For metrics where increase is good
-        impact = "positive" if change > 0 else "negative"
+        impact = "positive" if change > 0 else ("negative" if is_significant else "neutral")
         indicator = "↑" if change > 0 else "↓"
     else:  # neutral
-        # For metrics with no clear preference
-        impact = "neutral"
+        # Even for neutral preference indicators, significant movements should have impact
+        if is_significant:
+            # Default to cost perspective - increases in most indicators imply higher costs
+            impact = "negative" if change > 0 else "positive"
+        else:
+            impact = "neutral"
         indicator = "↑" if change > 0 else "↓"
     
     style_class = f"{impact}-impact"
     return indicator, style_class, impact
+
+def highlight_latest_value(df, chart_container):
+    """Highlight the latest value in the chart."""
+    if not df.empty and 'Date' in df.columns and 'value' in df.columns:
+        latest_date = df['Date'].max()
+        latest_value = df.loc[df['Date'] == latest_date, 'value'].iloc[0]
+        unit = df['unit'].iloc[0] if 'unit' in df.columns else ''
+        
+        formatted_value = latest_value
+        if unit == '$':
+            formatted_value = f"${latest_value:.2f}"
+        else:
+            formatted_value = f"{latest_value:.2f}"
+        
+        chart_container.markdown(f"""
+        <div style="position: absolute; top: 10px; right: 20px; background-color: rgba(255,255,255,0.8); 
+                    padding: 5px 10px; border-radius: 5px; border: 1px solid #ddd; z-index: 1000;">
+            <span style="font-weight: bold;">Latest: {formatted_value}</span>
+            <br><span style="font-size: 0.8rem;">({latest_date.strftime('%b %d, %Y')})</span>
+        </div>
+        """, unsafe_allow_html=True)

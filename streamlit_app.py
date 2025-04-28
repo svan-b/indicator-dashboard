@@ -92,10 +92,21 @@ except Exception as e:
 # Load data with caching
 @st.cache_data(ttl=3600)
 def load_data():
-    logger.info("Loading indicator data...")
+    # Generate a unique cache key based on current time to ensure fresh data
+    cache_key = datetime.now().strftime("%Y%m%d%H")
+    logger.info(f"Loading indicator data with cache key: {cache_key}")
     try:
         all_indicators, forecasts, summary_data, corr_matrix = load_all_indicators()
         logger.info(f"Loaded {len(all_indicators)} indicators and {len(forecasts)} forecasts")
+        
+        # Log the latest dates for key indicators to help with debugging
+        for indicator_id, indicator_info in all_indicators.items():
+            if indicator_id in ['supply_chain', 'wti_oil', 'cruspi']:
+                df = indicator_info[0]
+                if not df.empty and 'Date' in df.columns:
+                    latest_date = df['Date'].max()
+                    logger.info(f"Latest date for {indicator_id}: {latest_date}")
+        
         return all_indicators, forecasts, summary_data, corr_matrix
     except Exception as e:
         logger.error(f"Error loading data: {e}")

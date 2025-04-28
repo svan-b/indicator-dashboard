@@ -192,6 +192,25 @@ def create_sample_data():
 if __name__ == "__main__":
     logger.info("Starting data directory setup")
     
+    # Clear any cached data files to ensure we always use the latest
+    import glob
+    import os
+    
+    # Get data directory
+    data_dir = "data"
+    if os.path.exists(data_dir):
+        # Check for files to clear cache
+        for subdir in ['raw', 'processed', 'forecasts']:
+            dir_path = os.path.join(data_dir, subdir)
+            if os.path.exists(dir_path):
+                cache_files = glob.glob(os.path.join(dir_path, "*.cache.*"))
+                for cache_file in cache_files:
+                    try:
+                        os.remove(cache_file)
+                        logger.info(f"Removed cache file: {cache_file}")
+                    except Exception as e:
+                        logger.error(f"Error removing cache file {cache_file}: {e}")
+    
     # Ensure the directory structure exists
     ensure_dir_structure()
     

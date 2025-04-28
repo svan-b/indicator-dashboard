@@ -11,16 +11,23 @@ logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(level
 logger = logging.getLogger(__name__)
 
 def filter_time_period(df, time_period):
-    """Filter dataframe based on selected time period."""
+    """Filter dataframe based on selected time period with improved handling of recent data."""
     if df is None or df.empty or 'Date' not in df.columns:
         return df
     
     # Create a copy to avoid modifying the original
     filtered_df = df.copy()
     
+    # Ensure we are getting the absolute latest data by setting end_date to the max of the dataframe
+    # This avoids any filtering issue that might exclude the most recent data point
     end_date = filtered_df['Date'].max()
     
+    # Add explicit debugging for the latest date
+    latest_date = filtered_df['Date'].max()
+    logger.info(f"Latest date in original data: {latest_date}")
+    
     if time_period == "Last 6 Months":
+        # Make sure to use the latest date minus 6 months, not today - 6 months
         start_date = end_date - pd.DateOffset(months=6)
     elif time_period == "Last 12 Months":
         start_date = end_date - pd.DateOffset(months=12)
@@ -29,7 +36,21 @@ def filter_time_period(df, time_period):
     else:
         start_date = filtered_df['Date'].min()
     
-    return filtered_df[filtered_df['Date'] >= start_date]
+    # Explicitly include the end_date to ensure the most recent data is included
+    # Use inclusive bounds on both sides to avoid any filtering errors
+    result_df = filtered_df[(filtered_df['Date'] >= start_date) & (filtered_df['Date'] <= end_date)]
+    
+    # Double-check that the latest date is included by logging it
+    if not result_df.empty:
+        result_latest = result_df['Date'].max()
+        logger.info(f"Latest date in filtered data for time period {time_period}: {result_latest}")
+        # If we lost the latest date, add it back
+        if result_latest != latest_date:
+            logger.warning(f"Latest date was filtered out! Adding it back manually.")
+            latest_row = filtered_df[filtered_df['Date'] == latest_date]
+            result_df = pd.concat([result_df, latest_row]).drop_duplicates()
+    
+    return result_df
 
 def download_link(df, filename, link_text):
     """Generate a link to download the dataframe as a CSV file."""
@@ -85,22 +106,49 @@ def format_change(change, preferred_direction='neutral', use_absolute=False):
         
         return f"{sign}{change:.2f}%", style
 
-def get_impact_indicator(change, preferred_direction='neutral', use_absolute=False):
-    """Return impact indicator (↑/↓) with styling classes."""
+def get_impact_indicator(change, preferred_direction='neutral', use_absolute=False, indicator_id=None):
+    """Return impact indicator (↑/↓) with styling classes, properly accounting for business impact."""
     if pd.isna(change):
         return "", "neutral-impact", "neutral"
     
+    # Set significance thresholds - these determine when a change is significant enough to have an impact
+    significance_threshold = 2.0  # Default for percentage changes
+    
+    if use_absolute:
+        significance_threshold = 0.1  # Different threshold for absolute changes (like supply chain index)
+    
+    # Check if the change is significant
+    is_significant = abs(change) > significance_threshold
+    
+    # Handle special cases for specific indicators
+    if indicator_id:
+        # For commodity prices like oil, significant decreases are positive for most businesses (reduced costs)
+        if indicator_id in ['wti_oil', 'ppi_steel_scrap']:
+            preferred_direction = 'down'
+        
+        # For dollar index, weaker dollar (going down) tends to help US exporters
+        elif indicator_id == 'dollar_index':
+            preferred_direction = 'down'
+        
+        # For Baltic Dry Index, changes indicate shipping cost changes, lower is generally better
+        elif indicator_id == 'baltic_dry_index':
+            preferred_direction = 'down'
+    
     if preferred_direction == 'down':
-        # For metrics where decrease is good (like supply chain pressure)
-        impact = "positive" if change < 0 else "negative"
+        # For metrics where decrease is good (like supply chain pressure, costs)
+        impact = "positive" if change < 0 else ("negative" if is_significant else "neutral")
         indicator = "↓" if change < 0 else "↑"
     elif preferred_direction == 'up':
         # For metrics where increase is good
-        impact = "positive" if change > 0 else "negative"
+        impact = "positive" if change > 0 else ("negative" if is_significant else "neutral")
         indicator = "↑" if change > 0 else "↓"
     else:  # neutral
-        # For metrics with no clear preference
-        impact = "neutral"
+        # Even for neutral preference indicators, significant movements should have impact
+        if is_significant:
+            # Default to cost perspective - increases in most indicators imply higher costs
+            impact = "negative" if change > 0 else "positive"
+        else:
+            impact = "neutral"
         indicator = "↑" if change > 0 else "↓"
     
     style_class = f"{impact}-impact"
