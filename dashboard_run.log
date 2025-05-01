@@ -148,3 +148,449 @@
 2025-04-16 11:30:58,810 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
 2025-04-16 11:30:58,810 - __main__ - INFO - Starting Economic Indicators Dashboard...
 2025-04-16 11:30:58,810 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 11:46:28,283 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 11:46:28,283 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 11:46:28,283 - __main__ - INFO - Checking file structure...
+2025-04-16 11:46:28,283 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 11:46:28,284 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 11:46:28,284 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 11:46:28,284 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 11:46:28,284 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:01:01,966 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:01:01,966 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:01:01,967 - __main__ - INFO - Checking file structure...
+2025-04-16 12:01:01,967 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:01:01,967 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 12:01:01,968 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:01:01,968 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 12:01:01,968 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:07:32,048 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:07:32,048 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:07:32,048 - __main__ - INFO - Checking file structure...
+2025-04-16 12:07:32,049 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:07:32,049 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 12:07:32,050 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:07:32,050 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 12:07:32,050 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:20:28,881 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:20:28,882 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:20:28,882 - __main__ - INFO - Checking file structure...
+2025-04-16 12:20:28,882 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:20:28,883 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 12:20:28,883 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:20:28,884 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 12:20:28,884 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:23:45,577 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:23:45,577 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:23:45,578 - __main__ - INFO - Checking file structure...
+2025-04-16 12:23:45,578 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:23:45,578 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 12:23:45,579 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:23:45,579 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 12:23:45,579 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:24:24,558 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:24:24,560 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:24:24,560 - __main__ - INFO - Checking file structure...
+2025-04-16 12:24:24,560 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:24:24,560 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 12:24:24,561 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:24:24,561 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 12:24:24,561 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:27:17,289 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:27:17,289 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:27:17,291 - __main__ - INFO - Checking file structure...
+2025-04-16 12:27:17,291 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:27:17,292 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 12:27:17,292 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:27:17,292 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 12:27:17,292 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:42:50,312 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:42:50,313 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:42:50,313 - __main__ - INFO - Checking file structure...
+2025-04-16 12:42:50,313 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:42:50,314 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 12:42:50,314 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:42:50,315 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 12:42:50,315 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:50:38,191 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:50:38,191 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:50:38,193 - __main__ - INFO - Checking file structure...
+2025-04-16 12:50:38,193 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:50:38,193 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 12:50:38,194 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:50:38,194 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 12:50:38,194 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:57:24,269 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:57:24,269 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:57:24,269 - __main__ - INFO - Checking file structure...
+2025-04-16 12:57:24,269 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 12:57:24,270 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 12:57:24,270 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 12:57:24,271 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 12:57:24,271 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 16:46:36,372 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 16:46:36,373 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 16:46:36,373 - __main__ - INFO - Checking file structure...
+2025-04-16 16:46:36,373 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 16:46:36,374 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 16:46:36,374 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 16:46:36,375 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 16:46:36,375 - __main__ - INFO - Running command: streamlit run C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 17:10:16,395 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 17:10:16,396 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 17:10:16,396 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-16 17:10:16,407 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-16 17:10:16,411 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-16 17:10:16,412 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-16 17:10:16,414 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-16 17:10:16,415 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-16 17:10:16,416 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-16 17:10:16,416 - __main__ - INFO - Checking file structure...
+2025-04-16 17:10:16,416 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 17:10:16,416 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 17:10:16,417 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 17:10:16,417 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 17:10:16,417 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-16 17:10:16,417 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-16 17:12:27,291 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 17:12:27,291 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 17:12:27,291 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-16 17:12:27,293 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-16 17:12:27,294 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-16 17:12:27,295 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-16 17:12:27,297 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-16 17:12:27,298 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-16 17:12:27,300 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-16 17:12:27,300 - __main__ - INFO - Checking file structure...
+2025-04-16 17:12:27,301 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-16 17:12:27,301 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-16 17:12:27,301 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-16 17:12:27,301 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-16 17:12:27,302 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-16 17:12:27,302 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-17 22:44:43,002 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-17 22:44:43,003 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-17 22:44:43,003 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-17 22:44:43,017 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-17 22:44:43,031 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-17 22:44:43,041 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-17 22:44:43,046 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-17 22:44:43,052 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-17 22:44:43,054 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-17 22:44:43,055 - __main__ - INFO - Checking file structure...
+2025-04-17 22:44:43,055 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-17 22:44:43,056 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-17 22:44:43,056 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-17 22:44:43,057 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-17 22:44:43,060 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-17 22:44:43,061 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-22 09:32:29,445 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 09:32:29,446 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 09:32:29,446 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-22 09:32:29,457 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-22 09:32:29,463 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-22 09:32:29,468 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-22 09:32:29,474 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-22 09:32:29,477 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-22 09:32:29,479 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-22 09:32:29,479 - __main__ - INFO - Checking file structure...
+2025-04-22 09:32:29,480 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-22 09:32:29,480 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-22 09:32:29,481 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 09:32:29,481 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-22 09:32:29,482 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-22 09:32:29,482 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-22 10:34:08,405 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 10:34:08,406 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 10:34:08,406 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-22 10:34:08,412 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-22 10:34:08,414 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-22 10:34:08,416 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-22 10:34:08,418 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-22 10:34:08,420 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-22 10:34:08,421 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-22 10:34:08,421 - __main__ - INFO - Checking file structure...
+2025-04-22 10:34:08,422 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-22 10:34:08,422 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-22 10:34:08,422 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 10:34:08,422 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-22 10:34:08,423 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-22 10:34:08,423 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-22 10:55:43,643 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 10:55:43,643 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 10:55:43,643 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-22 10:55:43,646 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-22 10:55:43,648 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-22 10:55:43,649 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-22 10:55:43,652 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-22 10:55:43,654 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-22 10:55:43,656 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-22 10:55:43,656 - __main__ - INFO - Checking file structure...
+2025-04-22 10:55:43,656 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-22 10:55:43,656 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-22 10:55:43,656 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 10:55:43,656 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-22 10:55:43,656 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-22 10:55:43,657 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-22 11:01:18,352 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 11:01:18,352 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 11:01:18,353 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-22 11:01:18,356 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-22 11:01:18,358 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-22 11:01:18,359 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-22 11:01:18,363 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-22 11:01:18,365 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-22 11:01:18,367 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-22 11:01:18,367 - __main__ - INFO - Checking file structure...
+2025-04-22 11:01:18,367 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-22 11:01:18,367 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-22 11:01:18,367 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 11:01:18,368 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-22 11:01:18,368 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-22 11:01:18,368 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-22 15:29:27,076 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 15:29:27,076 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 15:29:27,077 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-22 15:29:27,084 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-22 15:29:27,088 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-22 15:29:27,091 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-22 15:29:27,095 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-22 15:29:27,097 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-22 15:29:27,098 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-22 15:29:27,098 - __main__ - INFO - Checking file structure...
+2025-04-22 15:29:27,099 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-22 15:29:27,099 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-22 15:29:27,099 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 15:29:27,099 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-22 15:29:27,100 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-22 15:29:27,100 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-22 15:32:36,259 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 15:32:36,259 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 15:32:36,259 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-22 15:32:36,264 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-22 15:32:36,266 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-22 15:32:36,267 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-22 15:32:36,271 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-22 15:32:36,273 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-22 15:32:36,274 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-22 15:32:36,275 - __main__ - INFO - Checking file structure...
+2025-04-22 15:32:36,275 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-22 15:32:36,275 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-22 15:32:36,275 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-22 15:32:36,275 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-22 15:32:36,275 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-22 15:32:36,275 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-24 10:24:43,546 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-24 10:24:43,547 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-24 10:24:43,548 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-24 10:24:43,557 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-24 10:24:43,563 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-24 10:24:43,567 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-24 10:24:43,572 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-24 10:24:43,575 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-24 10:24:43,576 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-24 10:24:43,577 - __main__ - INFO - Checking file structure...
+2025-04-24 10:24:43,577 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-24 10:24:43,577 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-24 10:24:43,578 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-24 10:24:43,578 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-24 10:24:43,579 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-24 10:24:43,579 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-27 18:40:42,384 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-27 18:40:42,385 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-27 18:40:42,387 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-27 18:40:42,405 - __main__ - INFO - Copied C:\Users\vanbo/Commercial and Market Research/indicator_data\raw\empire_prices_paid_sample.csv to data\raw\empire_prices_paid_sample.csv
+2025-04-27 18:40:42,429 - __main__ - INFO - Copied C:\Users\vanbo/Commercial and Market Research/indicator_data\raw\supply_chain_sample.csv to data\raw\supply_chain_sample.csv
+2025-04-27 18:40:42,450 - __main__ - INFO - Copied C:\Users\vanbo/Commercial and Market Research/indicator_data\raw\wti_oil_sample.csv to data\raw\wti_oil_sample.csv
+2025-04-27 18:40:42,451 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-27 18:40:42,460 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-27 18:40:42,467 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-27 18:40:42,475 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-27 18:40:42,482 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-27 18:40:42,485 - __main__ - INFO - Copied 3 data files to local data directory
+2025-04-27 18:40:42,485 - __main__ - INFO - Checking file structure...
+2025-04-27 18:40:42,486 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-27 18:40:42,486 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-27 18:40:42,487 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-27 18:40:42,488 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-27 18:40:42,489 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-27 18:40:42,489 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-27 19:11:50,050 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-27 19:11:50,050 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-27 19:11:50,051 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-27 19:11:50,056 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-27 19:11:50,058 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-27 19:11:50,061 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-27 19:11:50,063 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-27 19:11:50,065 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-27 19:11:50,067 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-27 19:11:50,067 - __main__ - INFO - Checking file structure...
+2025-04-27 19:11:50,068 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-27 19:11:50,068 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-27 19:11:50,068 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-27 19:11:50,068 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-27 19:11:50,068 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-27 19:11:50,068 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-27 19:15:18,050 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-27 19:15:18,051 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-27 19:15:18,051 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-27 19:15:18,055 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-27 19:15:18,057 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-27 19:15:18,058 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-27 19:15:18,061 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-27 19:15:18,063 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-27 19:15:18,066 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-27 19:15:18,066 - __main__ - INFO - Checking file structure...
+2025-04-27 19:15:18,066 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-27 19:15:18,066 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-27 19:15:18,066 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-27 19:15:18,067 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-27 19:15:18,067 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-27 19:15:18,067 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-28 11:40:33,812 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-28 11:40:33,854 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-28 11:40:33,858 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-28 11:40:33,901 - __main__ - INFO - Copied C:\Users\vanbo/Commercial and Market Research/indicator_data\raw\cruspi_direct.csv to data\raw\cruspi_direct.csv
+2025-04-28 11:40:33,929 - __main__ - INFO - Copied C:\Users\vanbo/Commercial and Market Research/indicator_data\raw\cruspi_synthetic.csv to data\raw\cruspi_synthetic.csv
+2025-04-28 11:40:33,971 - __main__ - INFO - Copied C:\Users\vanbo/Commercial and Market Research/indicator_data\raw\ppi_steel_scrap_sample.csv to data\raw\ppi_steel_scrap_sample.csv
+2025-04-28 11:40:33,974 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-28 11:40:33,992 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-28 11:40:34,001 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-28 11:40:34,014 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-28 11:40:34,025 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-28 11:40:34,031 - __main__ - INFO - Copied 3 data files to local data directory
+2025-04-28 11:40:34,038 - __main__ - INFO - Checking file structure...
+2025-04-28 11:40:34,040 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-28 11:40:34,042 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-28 11:40:34,042 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-28 11:40:34,044 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-28 11:40:34,046 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-28 11:40:34,046 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-30 16:56:52,723 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 16:56:52,724 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 16:56:52,726 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-30 16:56:52,742 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-30 16:56:52,749 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-30 16:56:52,765 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-30 16:56:52,771 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-30 16:56:52,787 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-30 16:56:52,793 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-30 16:56:52,794 - __main__ - INFO - Checking file structure...
+2025-04-30 16:56:52,795 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-30 16:56:52,795 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-30 16:56:52,795 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 16:56:52,796 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-30 16:56:52,796 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-30 16:56:52,799 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-30 17:22:57,947 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 17:22:57,948 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 17:22:57,948 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-30 17:22:57,950 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-30 17:22:57,951 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-30 17:22:57,952 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-30 17:22:57,955 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-30 17:22:57,956 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-30 17:22:57,957 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-30 17:22:57,959 - __main__ - INFO - Checking file structure...
+2025-04-30 17:22:57,959 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-30 17:22:57,959 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-30 17:22:57,959 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 17:22:57,960 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-30 17:22:57,960 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-30 17:22:57,960 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-30 17:25:14,246 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 17:25:14,248 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 17:25:14,248 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-30 17:25:14,250 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-30 17:25:14,251 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-30 17:25:14,252 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-30 17:25:14,255 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-30 17:25:14,256 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-30 17:25:14,257 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-30 17:25:14,257 - __main__ - INFO - Checking file structure...
+2025-04-30 17:25:14,257 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-30 17:25:14,258 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-30 17:25:14,258 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 17:25:14,258 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-30 17:25:14,258 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-30 17:25:14,258 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-04-30 17:51:04,613 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 17:51:04,613 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 17:51:04,615 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-04-30 17:51:04,621 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-04-30 17:51:04,625 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-04-30 17:51:04,629 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-04-30 17:51:04,631 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-04-30 17:51:04,634 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-04-30 17:51:04,635 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-04-30 17:51:04,635 - __main__ - INFO - Checking file structure...
+2025-04-30 17:51:04,635 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-04-30 17:51:04,635 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-04-30 17:51:04,635 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-04-30 17:51:04,636 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-04-30 17:51:04,636 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-04-30 17:51:04,636 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-05-01 14:12:14,423 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:12:14,424 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:12:14,425 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-05-01 14:12:14,431 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-05-01 14:12:14,435 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-05-01 14:12:14,438 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-05-01 14:12:14,444 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-05-01 14:12:14,447 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-05-01 14:12:14,450 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-05-01 14:12:14,450 - __main__ - INFO - Checking file structure...
+2025-05-01 14:12:14,450 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-05-01 14:12:14,451 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-05-01 14:12:14,451 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:12:14,451 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-05-01 14:12:14,451 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-05-01 14:12:14,452 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-05-01 14:18:04,322 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:18:04,323 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:18:04,323 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-05-01 14:18:04,326 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-05-01 14:18:04,328 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-05-01 14:18:04,329 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-05-01 14:18:04,333 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-05-01 14:18:04,335 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-05-01 14:18:04,338 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-05-01 14:18:04,339 - __main__ - INFO - Checking file structure...
+2025-05-01 14:18:04,339 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-05-01 14:18:04,339 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-05-01 14:18:04,340 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:18:04,340 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-05-01 14:18:04,340 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-05-01 14:18:04,341 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-05-01 14:19:53,370 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:19:53,370 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:19:53,370 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-05-01 14:19:53,373 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-05-01 14:19:53,374 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-05-01 14:19:53,376 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-05-01 14:19:53,378 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-05-01 14:19:53,380 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-05-01 14:19:53,381 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-05-01 14:19:53,381 - __main__ - INFO - Checking file structure...
+2025-05-01 14:19:53,381 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-05-01 14:19:53,381 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-05-01 14:19:53,381 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:19:53,382 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-05-01 14:19:53,382 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-05-01 14:19:53,382 - __main__ - INFO - Running command: streamlit run streamlit_app.py
+2025-05-01 14:22:15,498 - __main__ - INFO - Current directory: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:22:15,498 - __main__ - INFO - Project root: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:22:15,498 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\raw
+2025-05-01 14:22:15,502 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\processed
+2025-05-01 14:22:15,504 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/indicator_data\forecasts
+2025-05-01 14:22:15,505 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\raw
+2025-05-01 14:22:15,508 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\processed
+2025-05-01 14:22:15,510 - __main__ - INFO - Found source directory: C:\Users\vanbo/Commercial and Market Research/Economic_Dashboard_Modular/data\forecasts
+2025-05-01 14:22:15,511 - __main__ - WARNING - No data files were copied. Sample data may be used instead.
+2025-05-01 14:22:15,512 - __main__ - INFO - Checking file structure...
+2025-05-01 14:22:15,512 - __main__ - INFO - Found main.py at: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular\dashboard\main.py
+2025-05-01 14:22:15,512 - __main__ - INFO - Current Python path: ['C:\\Users\\vanbo\\Commercial and Market Research\\Economic_Dashboard_Modular', 'C:\\Users\\vanbo\\anaconda3\\python311.zip', 'C:\\Users\\vanbo\\anaconda3\\DLLs', 'C:\\Users\\vanbo\\anaconda3\\Lib', 'C:\\Users\\vanbo\\anaconda3', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\win32\\lib', 'C:\\Users\\vanbo\\anaconda3\\Lib\\site-packages\\Pythonwin']
+2025-05-01 14:22:15,512 - __main__ - INFO - Changed working directory to: C:\Users\vanbo\Commercial and Market Research\Economic_Dashboard_Modular
+2025-05-01 14:22:15,512 - __main__ - INFO - Starting Economic Indicators Dashboard...
+2025-05-01 14:22:15,512 - __main__ - INFO - Using streamlit_app.py (Cloud-compatible entry point)
+2025-05-01 14:22:15,513 - __main__ - INFO - Running command: streamlit run streamlit_app.py

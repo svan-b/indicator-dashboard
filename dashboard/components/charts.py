@@ -183,13 +183,15 @@ def create_correlation_matrix_chart(corr_matrix):
     # Create better labels that are more readable
     labels = {col: col.replace('_', ' ').title() for col in corr_matrix.columns}
     
-    # Use nicer colorscale
+    # Use a new colorscale with better contrast for text
     colorscale = [
-        [0, "#053061"],  # Dark blue for strong negative correlation
-        [0.25, "#abd9e9"],  # Light blue for weak negative correlation
-        [0.5, "#f7f7f7"],  # White for no correlation
-        [0.75, "#fdae61"],  # Light orange for weak positive correlation
-        [1, "#67001f"]   # Dark red for strong positive correlation
+        [0, "#0000CC"],       # Dark blue for strong negative correlation
+        [0.2, "#6699FF"],     # Medium blue for medium negative correlation
+        [0.4, "#CCDDFF"],     # Very light blue for weak negative correlation
+        [0.5, "#FFFFFF"],     # White for no correlation
+        [0.6, "#FFDDCC"],     # Very light red for weak positive correlation
+        [0.8, "#FF6666"],     # Medium red for medium positive correlation
+        [1, "#CC0000"]        # Dark red for strong positive correlation
     ]
     
     # Create the heatmap
@@ -202,27 +204,36 @@ def create_correlation_matrix_chart(corr_matrix):
         zmax=1
     )
     
-    # Add correlation values as text with improved contrast
+    # Add correlation values as text with MAXIMUM contrast - simpler approach
     annotations = []
     for i, row in enumerate(corr_matrix.index):
         for j, col in enumerate(corr_matrix.columns):
             value = corr_matrix.iloc[i, j]
             
-            # Text color based on correlation value for better visibility
-            # More dramatic contrast adjustment
-            if abs(value) < 0.2:  # Very light background
-                text_color = 'black'
-            elif abs(value) < 0.6:  # Medium background
-                text_color = 'black'
-            else:  # Dark background
-                text_color = 'white'
+            # MUCH simpler contrast approach - based purely on the absolute value
+            # This ensures dark cells ALWAYS have white text
+            abs_value = abs(value)
+            
+            # WHITE text for ANY cell with correlation > 0.4 (medium to dark cells)
+            # BLACK text for correlation < 0.4 (light cells)
+            if abs_value >= 0.4:
+                text_color = 'white'  # White text for ALL darker cells
+            else:
+                text_color = 'black'  # Black text only for very light cells
+                
+            # Use larger font for diagonal elements (which are always 1.0)
+            font_size = 14 if i == j else 12
                 
             annotations.append(
                 dict(
                     x=j,
                     y=i,
                     text=f"{value:.2f}",
-                    font=dict(color=text_color, size=11, family="Arial"),  # Removed 'weight' property
+                    font=dict(
+                        color=text_color, 
+                        size=font_size,
+                        family="Arial"
+                    ),
                     showarrow=False
                 )
             )

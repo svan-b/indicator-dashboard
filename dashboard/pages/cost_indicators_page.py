@@ -55,35 +55,62 @@ def show_cost_indicators_page():
         # Summary of year-over-year adjustments
         st.markdown('<h3 class="section-header">Year-Over-Year Adjustments (Cost Escalation)</h3>', unsafe_allow_html=True)
         
-        # Improved code for creating the yearly adjustments table
+        # Enhanced code for creating the yearly adjustments table with better logging
         yearly_data = []
+        logger.info("Processing cost indicators for yearly adjustments table")
+        
         for indicator_id, indicator_info in cost_indicators.items():
             df = indicator_info[0]
-            if not df.empty:
+            logger.info(f"Processing {indicator_id} with dataframe shape: {df.shape if df is not None else 'None'}")
+            
+            if df is not None and not df.empty:
                 try:
+                    # Log columns available
+                    logger.info(f"{indicator_id} columns: {df.columns.tolist()}")
+                    
                     # Check if yearly_adjustment column exists AND is not all NaN
-                    if 'yearly_adjustment' in df.columns and not pd.isna(df['yearly_adjustment']).all():
-                        # Get the latest non-NaN yearly adjustment value
-                        yearly_adj_series = df['yearly_adjustment'].dropna()
-                        if not yearly_adj_series.empty:
-                            yearly_adj = yearly_adj_series.iloc[-1]
-                            indicator_name = df['source'].iloc[0].replace(" (Composite)", "").replace(" (SAMPLE DATA)", "").replace(" (Sample Data)", "")
-                            
-                            # Calculate effective period with plain ASCII hyphen instead of en-dash
-                            latest_date = df['Date'].iloc[-1]
-                            effective_start = pd.Timestamp(latest_date.year, 4, 1)  # April 1st of current year
-                            effective_end = pd.Timestamp(latest_date.year + 1, 3, 31)  # March 31st of next year
-                            
-                            # Use plain ASCII hyphen instead of en-dash or other special characters
-                            effective_date = f"{effective_start.strftime('%b %d, %Y')} - {effective_end.strftime('%b %d, %Y')}"
-                            
-                            yearly_data.append({
-                                "Indicator": indicator_name,
-                                "Adjustment": f"{'+' if yearly_adj > 0 else ''}{yearly_adj:.2f}%", 
-                                "Effective Period": effective_date
-                            })
+                    if 'yearly_adjustment' in df.columns:
+                        # Check for NaN values
+                        nan_count = pd.isna(df['yearly_adjustment']).sum()
+                        non_nan_count = len(df) - nan_count
+                        logger.info(f"{indicator_id} yearly_adjustment: {non_nan_count} non-NaN values, {nan_count} NaN values")
+                        
+                        if not pd.isna(df['yearly_adjustment']).all():
+                            # Get the latest non-NaN yearly adjustment value
+                            yearly_adj_series = df['yearly_adjustment'].dropna()
+                            if not yearly_adj_series.empty:
+                                yearly_adj = yearly_adj_series.iloc[-1]
+                                logger.info(f"{indicator_id} latest yearly_adjustment: {yearly_adj}")
+                                
+                                # Get indicator name and clean it
+                                indicator_name = df['source'].iloc[0] if 'source' in df.columns else indicator_id.replace('_', ' ').title()
+                                indicator_name = indicator_name.replace(" (Composite)", "").replace(" (SAMPLE DATA)", "").replace(" (Sample Data)", "")
+                                
+                                # Calculate effective period
+                                latest_date = df['Date'].iloc[-1]
+                                effective_start = pd.Timestamp(latest_date.year, 4, 1)  # April 1st of current year
+                                effective_end = pd.Timestamp(latest_date.year + 1, 3, 31)  # March 31st of next year
+                                
+                                # Use plain ASCII hyphen
+                                effective_date = f"{effective_start.strftime('%b %d, %Y')} - {effective_end.strftime('%b %d, %Y')}"
+                                
+                                # Format adjustment with explicit sign
+                                adj_formatted = f"{'+' if yearly_adj > 0 else ''}{yearly_adj:.2f}%"
+                                
+                                yearly_data.append({
+                                    "Indicator": indicator_name,
+                                    "Adjustment": adj_formatted, 
+                                    "Effective Period": effective_date
+                                })
+                                logger.info(f"Added {indicator_id} to yearly data table with adjustment {adj_formatted}")
+                            else:
+                                logger.warning(f"{indicator_id} has yearly_adjustment column but all values are NaN")
+                        else:
+                            logger.warning(f"{indicator_id} has yearly_adjustment column but all values are NaN")
+                    else:
+                        logger.warning(f"{indicator_id} does not have yearly_adjustment column")
                 except Exception as e:
-                    logger.error(f"Error processing yearly adjustment for {indicator_id}: {e}")
+                    logger.error(f"Error processing yearly adjustment for {indicator_id}: {e}", exc_info=True)
         
         if yearly_data:
             yearly_df = pd.DataFrame(yearly_data)
@@ -123,18 +150,25 @@ def show_cost_indicators_page():
                 # Display the HTML table
                 st.markdown(html_table, unsafe_allow_html=True)
                 
-                # Also continue to show the standard dataframe (as a backup and for download feature)
-                with st.expander("View as dataframe"):
-                    st.dataframe(
-                        yearly_df,
-                        column_config={
-                            "Indicator": st.column_config.TextColumn("Indicator"),
-                            "Adjustment": st.column_config.TextColumn("Adjustment"),
-                            "Effective Period": st.column_config.TextColumn("Effective Period")
-                        },
-                        use_container_width=True,
-                        hide_index=True
-                    )
+                # Display the dataframe with explicitly controlled rendering
+                st.subheader("Cost Adjustments Data")
+                
+                # Use a simpler approach with st.table for more reliable rendering
+                styled_df = yearly_df.copy()
+                
+                # Force the dataframe to display even if it's being hidden by CSS
+                st.markdown("<div style='margin-top:20px; margin-bottom:20px;'>", unsafe_allow_html=True)
+                st.table(styled_df)
+                st.markdown("</div>", unsafe_allow_html=True)
+                
+                # Also keep the standard dataframe as a backup display method
+                st.markdown("<div style='margin-top:10px;'>", unsafe_allow_html=True)
+                st.dataframe(
+                    data=yearly_df,
+                    use_container_width=True,
+                    hide_index=True
+                )
+                st.markdown("</div>", unsafe_allow_html=True)
                 
                 # Add download link for adjustments
                 st.markdown(

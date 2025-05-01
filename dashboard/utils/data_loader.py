@@ -152,6 +152,60 @@ def load_indicator_data(indicator_id):
     data_source = ""
     using_sample_data = False
     
+    # Special handling for CRUspi to prioritize direct data
+    if indicator_id == 'cruspi':
+        direct_file_path = os.path.join(RAW_DIR, "cruspi_direct.csv")
+        if os.path.exists(direct_file_path):
+            try:
+                logger.info(f"Loading CRUspi data from direct file: {direct_file_path}")
+                df = pd.read_csv(direct_file_path)
+                
+                if not df.empty:
+                    # Process the CRUspi direct data
+                    logger.info(f"Successfully loaded CRUspi direct data with shape: {df.shape}")
+                    
+                    # Ensure date column is properly formatted
+                    if 'Date' not in df.columns and 'date' in df.columns:
+                        df['Date'] = df['date']
+                    
+                    # Find the main value column if 'value' doesn't exist
+                    if 'value' not in df.columns:
+                        # Look for numerical columns that could be values
+                        value_cols = [col for col in df.select_dtypes(include=['number']).columns 
+                                    if not any(x in col.lower() for x in ['date', 'time', 'year', 'month', 'day'])]
+                        if value_cols:
+                            df['value'] = df[value_cols[0]]
+                            logger.info(f"Using {value_cols[0]} as value column for CRUspi")
+                    
+                    # Continue with standard processing
+                    df['Date'] = pd.to_datetime(df['Date'])
+                    
+                    # Add missing columns if needed
+                    if 'monthly_change' not in df.columns and 'value' in df.columns and len(df) > 1:
+                        df['monthly_change'] = df['value'].pct_change() * 100
+                    if 'yoy_change' not in df.columns and 'value' in df.columns and len(df) >= 12:
+                        df['yoy_change'] = df['value'].pct_change(12) * 100
+                    if 'source' not in df.columns:
+                        df['source'] = "CRU Steel Price Index" # Direct, non-sample source
+                    if 'unit' not in df.columns:
+                        df['unit'] = get_default_unit(indicator_id)
+                    if 'preferred_direction' not in df.columns:
+                        df['preferred_direction'] = get_default_preferred_direction(indicator_id)
+                    if 'description' not in df.columns:
+                        df['description'] = get_default_description(indicator_id)
+                    if 'last_updated_date' not in df.columns:
+                        df['last_updated_date'] = df['Date'].max().strftime("%b-%y")
+                    
+                    # Explicitly mark as NOT sample data
+                    using_sample_data = False
+                    data_source = f"Data from direct file: {os.path.basename(direct_file_path)}"
+                    logger.info(f"Successfully loaded CRUspi data with latest date: {df['Date'].max()}")
+                    
+                    return df, data_source, using_sample_data
+            except Exception as e:
+                logger.error(f"Error reading direct CRUspi file: {e}")
+    
+    # Continue with regular file loading for non-CRUspi or if CRUspi direct failed
     # Try multiple possible file names and paths
     possible_files = [
         os.path.join(PROCESSED_DIR, f"{indicator_id}_monthly.csv"),
@@ -222,6 +276,12 @@ def load_indicator_data(indicator_id):
                 # Process the data
                 df['Date'] = pd.to_datetime(df['Date'])
                 
+                # Ensure no future dates in the data
+                current_date = datetime.now()
+                if df['Date'].max() > current_date:
+                    logger.warning(f"File {file_path} contains future dates. These will be filtered out.")
+                    df = df[df['Date'] <= current_date]
+                
                 # Add missing columns if needed
                 if 'monthly_change' not in df.columns and 'value' in df.columns and len(df) > 1:
                     df['monthly_change'] = df['value'].pct_change() * 100
@@ -238,6 +298,12 @@ def load_indicator_data(indicator_id):
                 if 'last_updated_date' not in df.columns:
                     df['last_updated_date'] = df['Date'].max().strftime("%b-%y")
                 
+                # Check if sample data
+                using_sample_data = 'sample' in file_path.lower() or 'SAMPLE' in file_path
+                if 'source' in df.columns:
+                    if any(df['source'].str.contains('sample', case=False)) or any(df['source'].str.contains('SAMPLE')):
+                        using_sample_data = True
+                
                 data_source = f"Data from file: {os.path.basename(file_path)}"
                 logger.info(f"Successfully loaded {indicator_id} data with latest date: {df['Date'].max()}")
                 return df, data_source, using_sample_data
@@ -250,6 +316,53 @@ def load_indicator_data(indicator_id):
     df = generate_sample_data(indicator_id)
     data_source = f"Sample data ({get_default_source_name(indicator_id)})"
     return df, data_source, using_sample_data
+
+def is_sample_data(indicator_info):
+    """Determine more accurately if the data is sample data."""
+    if isinstance(indicator_info, tuple) and len(indicator_info) >= 3:
+        # If explicitly marked as sample data by the loader function
+        if indicator_info[2]:
+            return True
+        
+        # If indicator_id is cruspi and we're using the direct file
+        data_df = indicator_info[0]
+        source = indicator_info[1]
+        
+        # Special case for cruspi with direct file
+        if 'indicator_id' in data_df.columns and data_df['indicator_id'].iloc[0] == 'cruspi':
+            if 'direct' in source.lower():
+                # We know it's from the direct file, not sample
+                return False
+        
+        # Check data source string for sample indicators
+        if 'sample' in source.lower() or 'SAMPLE' in source:
+            return True
+        
+        if not data_df.empty and 'source' in data_df.columns:
+            source_col = data_df['source'].iloc[0] 
+            if 'sample' in source_col.lower() or 'SAMPLE' in source_col:
+                return True
+    
+    return False
+
+def get_valid_update_date(date_value):
+    """Ensure the last updated date is not in the future."""
+    try:
+        # Convert to datetime if it's not already
+        if not isinstance(date_value, datetime):
+            date_value = pd.to_datetime(date_value)
+        
+        # Check if date is in the future
+        now = datetime.now()
+        if date_value > now:
+            # Return current date if future date detected
+            logger.warning(f"Future date detected: {date_value}. Using current date instead.")
+            return now.strftime('%b %d, %Y')
+        
+        return date_value.strftime('%b %d, %Y')
+    except Exception as e:
+        logger.error(f"Error formatting date: {e}")
+        return "Unknown"
 
 def load_forecast_data(indicator_id):
     """Load forecast data from files or generate sample data if not available."""
@@ -323,6 +436,12 @@ def load_forecast_data(indicator_id):
                     df['preferred_direction'] = get_default_preferred_direction(indicator_id)
                 if 'unit' not in df.columns and indicator_id == 'wti_oil':
                     df['unit'] = '$'
+                
+                # Check if sample data
+                using_sample_data = 'sample' in file_path.lower() or any(word in file_path for word in ['SAMPLE', 'Sample'])
+                if 'source' in df.columns:
+                    if any(df['source'].str.contains('sample', case=False)) or any(df['source'].str.contains('SAMPLE')):
+                        using_sample_data = True
                     
                 data_source = f"Forecast from file: {os.path.basename(file_path)}"
                 return df, data_source, using_sample_data
@@ -367,20 +486,28 @@ def generate_sample_forecast_from_actual(indicator_id, actual_data):
             monthly_pct_changes = recent_values.pct_change().dropna()
             avg_monthly_pct_change = monthly_pct_changes.mean() if not monthly_pct_changes.empty else 0.005
             
+            # Limit extreme trends to avoid discontinuities
+            if avg_monthly_pct_change > 0.05:  # Cap at 5% monthly growth
+                avg_monthly_pct_change = 0.05
+            elif avg_monthly_pct_change < -0.05:  # Cap at -5% monthly decline
+                avg_monthly_pct_change = -0.05
+            
             # Use this to project future values
             values = []
             for i in range(num_periods):
                 if i == 0:
                     # First forecast value should be very close to last actual
-                    new_value = last_value * (1 + avg_monthly_pct_change + np.random.normal(0, 0.001))
+                    # Smaller random component to ensure continuity
+                    new_value = last_value * (1 + avg_monthly_pct_change + np.random.normal(0, 0.0005))
                 else:
-                    # Subsequent values follow the trend with some randomness
-                    new_value = values[-1] * (1 + avg_monthly_pct_change + np.random.normal(0, 0.002 * i))
+                    # Subsequent values follow the trend with gradually increasing randomness
+                    new_value = values[-1] * (1 + avg_monthly_pct_change + np.random.normal(0, 0.001 * i))
                 values.append(new_value)
             
             # Generate confidence intervals that widen with time
-            lower_ci = [val * (1 - 0.01 - 0.005*i) for i, val in enumerate(values)]
-            upper_ci = [val * (1 + 0.01 + 0.005*i) for i, val in enumerate(values)]
+            # Start with narrower intervals to ensure continuity
+            lower_ci = [val * (1 - 0.005 - 0.005*i) for i, val in enumerate(values)]
+            upper_ci = [val * (1 + 0.005 + 0.005*i) for i, val in enumerate(values)]
             
             df = pd.DataFrame({
                 'Date': forecast_dates,
@@ -461,6 +588,14 @@ def load_all_indicators():
             data_source = df_info[1]
             using_sample_data = df_info[2]
             
+            # Special handling for CRUspi direct data
+            if indicator_id == 'cruspi' and 'direct' in data_source.lower():
+                using_sample_data = False
+            # Additional check for sample data
+            elif 'source' in df.columns:
+                if any(df['source'].str.contains('sample', case=False)) or any(df['source'].str.contains('SAMPLE')):
+                    using_sample_data = True
+            
             if not df.empty:
                 latest_data = df.iloc[-1].to_dict()
                 forecast_info = forecasts.get(indicator_id, (pd.DataFrame(), "", False))
@@ -469,9 +604,19 @@ def load_all_indicators():
                 # Determine trend
                 trend_text, trend_class, trend_desc = determine_trend(df, forecast_df)
                 
+                # Ensure last_updated date is not in the future
+                last_updated = pd.to_datetime(latest_data.get('Date'))
+                if last_updated > datetime.now():
+                    last_updated = datetime.now()
+                
+                # Override source name for CRUspi direct data to ensure we don't display "sample"
+                source_name = latest_data.get('source', '')
+                if indicator_id == 'cruspi' and 'direct' in data_source.lower():
+                    source_name = "CRU Steel Price Index"
+                
                 summary_data[indicator_id] = {
                     'indicator_id': indicator_id,
-                    'name': latest_data.get('source', ''),
+                    'name': source_name,
                     'current_value': latest_data.get('value', 0),
                     'monthly_change': latest_data.get('monthly_change', 0),
                     'yoy_change': latest_data.get('yoy_change', 0),
@@ -481,7 +626,7 @@ def load_all_indicators():
                     'trend_text': trend_text,
                     'trend_class': trend_class,
                     'trend_description': trend_desc,
-                    'last_updated': pd.to_datetime(latest_data.get('Date')).strftime('%b %Y') if 'Date' in latest_data else datetime.now().strftime('%b %Y'),
+                    'last_updated': last_updated.strftime('%b %Y'),
                     'data_source': data_source,
                     'using_sample_data': using_sample_data,
                     # Add yearly_adjustment if available for cost indicators
@@ -765,19 +910,20 @@ def generate_sample_forecast(indicator_id):
     values = []
     trend = 0.002  # Default mild monthly increase
     
+    # Use smaller randomness for first value to avoid discontinuity
     for i in range(len(dates)):
         if i == 0:
-            # First forecast value
-            value = base_value * (1 + np.random.normal(0, 0.01))
+            # First forecast value - less randomness
+            value = base_value * (1 + np.random.normal(0, 0.002))
         else:
-            # Subsequent values follow a mild trend with some randomness
-            value = values[-1] * (1 + trend + np.random.normal(0, 0.005 * (i+1)))
+            # Subsequent values follow a mild trend with gradually increasing randomness
+            value = values[-1] * (1 + trend + np.random.normal(0, 0.002 * (i+1)))
         
         values.append(value)
     
-    # Create confidence intervals that widen with time
-    lower_ci = [val * (1 - 0.01 - 0.005*i) for i, val in enumerate(values)]
-    upper_ci = [val * (1 + 0.01 + 0.005*i) for i, val in enumerate(values)]
+    # Create confidence intervals that widen with time - starting narrow
+    lower_ci = [val * (1 - 0.005 - 0.003*i) for i, val in enumerate(values)]
+    upper_ci = [val * (1 + 0.005 + 0.003*i) for i, val in enumerate(values)]
     
     # Create DataFrame
     df = pd.DataFrame({

@@ -51,7 +51,24 @@ def find_sample_data():
     
     found_files = []
     for pattern in patterns:
-        found_files.extend(glob.glob(pattern, recursive=True))
+        matches = glob.glob(pattern, recursive=True)
+        for match in matches:
+            logger.info(f"Found data file: {match}")
+            found_files.append(match)
+    
+    # Prioritize CRUspi direct data
+    cruspi_direct = None
+    for file in found_files:
+        if 'cruspi_direct' in file.lower():
+            cruspi_direct = file
+            logger.info(f"Found CRUspi direct data: {cruspi_direct}")
+            break
+    
+    # If we found CRUspi direct, put it at the front of the list for priority
+    if cruspi_direct:
+        found_files.remove(cruspi_direct)
+        found_files.insert(0, cruspi_direct)
+        logger.info(f"Prioritizing CRUspi direct data for copying")
     
     logger.info(f"Found {len(found_files)} sample data files")
     return found_files
@@ -66,9 +83,36 @@ def copy_data_files(source_files):
     }
     
     copied_count = 0
+    cruspi_processed = False
     
     for source_file in source_files:
-        # Determine the destination directory
+        # Special handling for CRUspi direct data
+        if 'cruspi_direct' in source_file.lower():
+            # Copy to both raw and processed directories
+            try:
+                # Copy to raw directory as is
+                raw_dest_file = os.path.join(dest_map["raw"], "cruspi_direct.csv")
+                shutil.copy2(source_file, raw_dest_file)
+                logger.info(f"Copied CRUspi direct data to: {raw_dest_file}")
+                
+                # Also create processed version with standardized name for easier loading
+                processed_dest_file = os.path.join(dest_map["processed"], "cruspi.csv")
+                shutil.copy2(source_file, processed_dest_file)
+                logger.info(f"Copied CRUspi direct data to processed dir: {processed_dest_file}")
+                
+                # Mark CRUspi as processed to avoid copying sample data
+                cruspi_processed = True
+                copied_count += 2
+            except Exception as e:
+                logger.error(f"Failed to copy CRUspi direct data: {e}")
+            continue
+            
+        # Skip CRUspi sample files if we already processed the direct data
+        if cruspi_processed and ('cruspi_sample' in source_file.lower() or 'cruspi.csv' in source_file.lower()):
+            logger.info(f"Skipping CRUspi sample file since direct data was processed: {source_file}")
+            continue
+        
+        # Regular file handling for other files
         for key, dest_dir in dest_map.items():
             if key in source_file:
                 # Get filename from path

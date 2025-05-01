@@ -132,6 +132,12 @@ def get_css():
             color: #333333;
             line-height: 1.4;
         }
+        .forecast-explanation {
+            font-size: 0.85rem;
+            font-style: italic;
+            margin-top: 5px;
+            color: #555555;
+        }
         .analysis-section {
             background-color: #f5f5f5;
             padding: 1rem;
@@ -220,6 +226,28 @@ def get_css():
             background-color: #888888;
             color: white;
         }
+        
+        /* Traffic light impact indicators */
+        .impact-traffic-light {
+            display: inline-block;
+            width: 15px;
+            height: 15px;
+            border-radius: 50%;
+            margin-right: 5px;
+        }
+        .impact-green {
+            background-color: #00A651;
+            border: 1px solid #008741;
+        }
+        .impact-yellow {
+            background-color: #FFC107;
+            border: 1px solid #D9A406;
+        }
+        .impact-red {
+            background-color: #ce3e0d;
+            border: 1px solid #ae3409;
+        }
+        
         .last-updated-badge {
             background-color: #0072CE;
             color: white;

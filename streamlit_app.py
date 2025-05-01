@@ -82,9 +82,58 @@ st.markdown('<h1 style="color:#00103f; font-size:2.5rem; font-weight:700;">Econo
 # Verify data availability before loading
 try:
     data_available = verify_data_availability()
+    
+    # Check specifically for CRUspi direct data
+    cruspi_paths = [
+        os.path.join("data", "raw", "cruspi_direct.csv"),
+        os.path.join("data", "processed", "cruspi.csv")
+    ]
+    
+    cruspi_data_found = any(os.path.exists(path) for path in cruspi_paths)
+    
+    # Create an expander for data diagnostic information
+    with st.expander("Dashboard Diagnostic Information"):
+        st.write("### Data Availability Status")
+        
+        # Overall data status
+        st.write(f"- Overall data status: {'🟢 Data directories found' if data_available else '🟡 Some data directories may be missing'}")
+        
+        # CRUspi specific status
+        cruspi_status = "🟢 CRUspi data found" if cruspi_data_found else "🟡 CRUspi data not found, may use sample data"
+        st.write(f"- CRUspi status: {cruspi_status}")
+        
+        # List data directories
+        st.write("### Data Directories")
+        data_dir = "data"
+        if os.path.exists(data_dir):
+            for subdir in ['raw', 'processed', 'forecasts']:
+                dir_path = os.path.join(data_dir, subdir)
+                if os.path.exists(dir_path):
+                    files = os.listdir(dir_path)
+                    st.write(f"- {subdir}: {len(files)} files found")
+                    
+                    # For raw directory, check for CRUspi files
+                    if subdir == 'raw':
+                        cruspi_files = [f for f in files if 'cruspi' in f.lower()]
+                        if cruspi_files:
+                            st.write(f"  - CRUspi files in raw directory: {', '.join(cruspi_files)}")
+        else:
+            st.write("- Data directory not found")
+            
+        # Environment information
+        st.write("### Environment Information")
+        st.write(f"- Running in: {'Streamlit Cloud' if is_cloud else 'Local Environment'}")
+        st.write(f"- Current working directory: {os.getcwd()}")
+    
+    # Show warning if needed
     if not data_available:
         st.warning("Some data directories were not found or are empty. Sample data may be used.")
         logger.warning("Data verification indicates some data sources may be unavailable")
+    
+    # Show specific warning for CRUspi if not found
+    if not cruspi_data_found:
+        st.warning("CRUspi data file not found. Sample data will be used for CRUspi indicator.")
+        logger.warning("CRUspi data file not found, will use sample data")
 except Exception as e:
     st.warning(f"Data verification error (non-critical): {str(e)}")
     logger.warning(f"Data verification error: {str(e)}")
@@ -96,17 +145,53 @@ def load_data():
     cache_key = datetime.now().strftime("%Y%m%d%H")
     logger.info(f"Loading indicator data with cache key: {cache_key}")
     try:
+        # Check for CRUspi data first
+        cruspi_paths = [
+            os.path.join("data", "raw", "cruspi_direct.csv"),
+            os.path.join("data", "processed", "cruspi.csv"),
+            os.path.join("data", "raw", "cruspi_sample.csv")
+        ]
+        
+        cruspi_found = False
+        for path in cruspi_paths:
+            if os.path.exists(path):
+                logger.info(f"Found CRUspi data at: {path}")
+                cruspi_found = True
+                break
+        
+        if not cruspi_found:
+            logger.warning("No CRUspi data found - indicator may use sample data")
+        
+        # Load all indicators
         all_indicators, forecasts, summary_data, corr_matrix = load_all_indicators()
         logger.info(f"Loaded {len(all_indicators)} indicators and {len(forecasts)} forecasts")
         
-        # Log the latest dates for key indicators to help with debugging
+        # Check if any indicators using sample data
+        sample_indicators = []
         for indicator_id, indicator_info in all_indicators.items():
+            is_sample = indicator_info[2] if len(indicator_info) > 2 else False
+            if is_sample:
+                sample_indicators.append(indicator_id)
+                
+            # Log the latest dates and sample status for key indicators
             if indicator_id in ['supply_chain', 'wti_oil', 'cruspi']:
                 df = indicator_info[0]
                 if not df.empty and 'Date' in df.columns:
                     latest_date = df['Date'].max()
-                    logger.info(f"Latest date for {indicator_id}: {latest_date}")
+                    logger.info(f"Latest date for {indicator_id}: {latest_date}, using sample data: {is_sample}")
+                    
+                    # For CRUspi, add detailed logging
+                    if indicator_id == 'cruspi':
+                        # Log source information
+                        source = indicator_info[1]
+                        logger.info(f"CRUspi source: {source}")
+                        
+                        # Check if we have 'source' column in the dataframe
+                        if 'source' in df.columns:
+                            source_col = df['source'].iloc[0]
+                            logger.info(f"CRUspi source column value: {source_col}")
         
+        logger.info(f"Indicators using sample data: {sample_indicators}")
         return all_indicators, forecasts, summary_data, corr_matrix
     except Exception as e:
         logger.error(f"Error loading data: {e}")

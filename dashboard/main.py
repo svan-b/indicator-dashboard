@@ -380,6 +380,15 @@ if selected_view == "Main Dashboard":
         df = indicator_info[0]
         source = indicator_info[1]
         is_sample = indicator_info[2]
+        
+        # More robust sample data detection
+        if 'sample' in source.lower() or 'SAMPLE' in source:
+            is_sample = True
+        if not df.empty and 'source' in df.columns:
+            source_col = df['source'].iloc[0] 
+            if 'sample' in source_col.lower() or 'SAMPLE' in source_col:
+                is_sample = True
+                
         if not df.empty:
             indicator_name = df['source'].iloc[0] if 'source' in df.columns else indicator_id.replace('_', ' ').title()
             data_type = "Sample Data" if is_sample else "Actual Data"
